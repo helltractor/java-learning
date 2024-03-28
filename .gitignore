@@ -1,0 +1,7 @@
+**/target/
+**/test/
+.idea
+*.iml
+*.class
+*.gitignore
+*Test.java
