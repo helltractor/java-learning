@@ -23,6 +23,7 @@
         <module>thread</module>
         <module>test</module>
         <module>rocketmq</module>
+        <module>pattern-design</module>
     </modules>
 
     <properties>
