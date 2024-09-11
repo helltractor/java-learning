@@ -9,7 +9,7 @@
         <version>0.0.1</version>
     </parent>
 
-    <groupId>org.redis</groupId>
+    <groupId>com.redis.demo</groupId>
     <artifactId>redis</artifactId>
 
     <properties>
@@ -38,6 +38,16 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
         </dependency>
     </dependencies>
 </project>
