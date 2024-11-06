@@ -67,9 +67,9 @@ public interface UserMapper {
 }
 ```
 
-## Reference
+### Reference
 
-1. [springboot 工程启动报错之Consider defining a bean of type ‘XXX’ in your configuration.](https://www.cnblogs.com/nananana/p/9333917.html)
+* [springboot 工程启动报错之Consider defining a bean of type ‘XXX’ in your configuration.](https://www.cnblogs.com/nananana/p/9333917.html)
 
 ## Case 2 : Invalid value type for attribute 'factoryBeanObjectType'
  
@@ -99,53 +99,6 @@ java.lang.IllegalArgumentException: Invalid value type for attribute 'factoryBea
 	at org.springcache.org.stream.DemoApplication.main(org.stream.DemoApplication.java:15) ~[classes/:na]
 ```
 
-```xml
-<parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.2.0</version>
-</parent>
-
-<groupId>org.demo</groupId>
-<artifactId>demo</artifactId>
-<version>1.0-SNAPSHOT</version>
-<packaging>pom</packaging>
-
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.2.0</version>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-```
-
-### Solution
-```xml
-<parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <!--modify-->
-    <version>2.7.3</version>    
-</parent>
-
-<groupId>org.demo</groupId>
-<artifactId>demo</artifactId>
-<version>1.0-SNAPSHOT</version>
-<packaging>pom</packaging>
-
-<dependencyManagement>
-    <dependencies>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.2.0</version>
-        </dependency>
-    </dependencies>
-</dependencyManagement>
-```
-
 ### Reference
-1. [mybatis-spring](http://doc.vrd.net.cn/mybatis/spring/zh/index.html)
+* [MyBatis-Spring](http://doc.vrd.net.cn/mybatis/spring/zh/index.html)
+* [MyBatis-Spring-Boot-Starter Introduction](https://github.com/mybatis/spring-boot-starter/blob/master/mybatis-spring-boot-autoconfigure/src/site/zh_CN/markdown/index.md)

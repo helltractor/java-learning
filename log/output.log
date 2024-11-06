@@ -1,0 +1,7 @@
+13:22:49.228 [main] INFO  c.helltractor.demo.DemoApplication - Starting DemoApplication using Java 21.0.2 with PID 263540 (D:\Java\java-learning\demo-redis\target\classes started by helltractor in D:\Java\java-learning)
+13:22:49.230 [main] INFO  c.helltractor.demo.DemoApplication - No active profile set, falling back to 1 default profile: "default"
+13:22:49.466 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+13:22:49.468 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+13:22:49.489 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+13:22:50.244 [main] INFO  c.h.demo.config.RedisConfiguration - 开始创建RedisTemplate对象： org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory@120d3fd
+13:22:50.439 [main] INFO  c.helltractor.demo.DemoApplication - Started DemoApplication in 1.463 seconds (process running for 1.951)

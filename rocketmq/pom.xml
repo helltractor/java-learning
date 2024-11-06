@@ -3,20 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.helltractor.demo</groupId>
-        <artifactId>java-learning</artifactId>
-        <version>0.0.1</version>
-    </parent>
-
-    <groupId>org.rcoketmq</groupId>
+    <groupId>com.helltractor.demo</groupId>
     <artifactId>rocketmq</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <project.version>1.0-SNAPSHOT</project.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <rocketmq-client-java-version>5.0.7</rocketmq-client-java-version>
+        <slf4j.version>1.7.30</slf4j.version>
     </properties>
 
     <dependencies>
@@ -25,15 +22,15 @@
             <artifactId>rocketmq-client-java</artifactId>
             <version>${rocketmq-client-java-version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
-
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
     </dependencies>
 </project>
