@@ -10,30 +10,36 @@
         <module name="demo-aspectj" />
         <module name="demo-mybatis" />
         <module name="demo-redis" />
-        <module name="rocketmq" />
-        <module name="pattern-proxy" />
         <module name="demo-stream" />
-        <module name="pattern-command" />
+        <module name="demo-common" />
         <module name="demo-thread" />
         <module name="demo-reflection" />
-        <module name="pattern-memento" />
+        <module name="demo-consul" />
         <module name="demo-test" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="java-learning" target="21" />
+      <module name="pattern-command" target="21" />
+      <module name="pattern-design" target="21" />
+      <module name="pattern-memento" target="21" />
+      <module name="pattern-proxy" target="21" />
+      <module name="rocketmq" target="21" />
+      <module name="sentinel" target="17" />
+      <module name="sentinel-simple-http" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demo-aspectj" options="-parameters" />
+      <module name="demo-common" options="-parameters" />
+      <module name="demo-consul" options="-parameters" />
       <module name="demo-mybatis" options="-parameters" />
       <module name="demo-redis" options="-parameters" />
       <module name="demo-reflection" options="-parameters" />
       <module name="demo-stream" options="-parameters" />
       <module name="demo-test" options="-parameters" />
       <module name="demo-thread" options="-parameters" />
-      <module name="pattern-command" options="" />
-      <module name="pattern-memento" options="" />
-      <module name="pattern-proxy" options="" />
-      <module name="rocketmq" options="" />
     </option>
   </component>
 </project>
