@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan(basePackages = "com.helltractor.demo.mapper", annotationClass = Mapper.class)
-public class DemoApplication {
+public class MybatisApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(MybatisApplication.class, args);
     }
 }

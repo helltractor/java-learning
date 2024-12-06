@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@SpringBootTest(classes = DemoApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = MybatisApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 class MybatisTest {
 
     final Logger logger = LoggerFactory.getLogger(getClass());
