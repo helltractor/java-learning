@@ -12,4 +12,5 @@ public interface FooMapper {
      * @return
      */
     LocalDateTime now();
+    
 }

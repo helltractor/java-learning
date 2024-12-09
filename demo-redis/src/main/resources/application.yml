@@ -1,5 +1,4 @@
 spring:
-  # 配置redis的数据源
   data:
     redis:
       host: localhost
