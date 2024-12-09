@@ -77,8 +77,8 @@ class SearchAndMatch {
         Optional<Person> optionalPerson = people.stream().findAny();
         optionalPerson.ifPresent(System.out::println);
     }
+    
 }
-
 /**
  * Aggregation operations
  * 聚合操作，统计元素
@@ -153,8 +153,8 @@ class Aggregation {
         String s1 = people.stream().map(Person::getName).reduce("", (s2, s3) -> s2 + s3 + ',');
         System.out.println(s1);
     }
+    
 }
-
 class Collect {
 
     private final List<Person> people = List.of(
@@ -345,4 +345,5 @@ class Collect {
 
         System.out.println(collect);
     }
+    
 }

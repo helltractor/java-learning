@@ -27,5 +27,6 @@ public class LazyConnectionProxy extends AbstractConnectionProxy {
 			target = supplier.get();
 		}
 		return target;
-	}
+	    }
+    
 }

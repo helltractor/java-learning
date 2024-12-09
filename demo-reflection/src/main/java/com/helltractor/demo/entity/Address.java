@@ -44,4 +44,5 @@ public class Address {
     public void printPostCode() {
         System.out.println("Address postCode: " + postCode);
     }
+    
 }

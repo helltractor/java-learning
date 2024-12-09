@@ -23,5 +23,6 @@ public class PooledConnectionProxy extends AbstractConnectionProxy {
 	@Override
 	protected Connection getRealConnection() {
 		return target;
-	}
+	    }
+    
 }

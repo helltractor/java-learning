@@ -9,4 +9,5 @@ class Task3 {
         System.out.printf("[%s] work of %s has done.\n", Thread.currentThread().getName(),
                 UserContext.getCurrentUser());
     }
+    
 }

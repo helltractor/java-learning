@@ -79,5 +79,6 @@ public class PooledDataSource implements DataSource {
 	@Override
 	public int getLoginTimeout() throws SQLException {
 		throw new SQLFeatureNotSupportedException();
-	}
+	    }
+    
 }

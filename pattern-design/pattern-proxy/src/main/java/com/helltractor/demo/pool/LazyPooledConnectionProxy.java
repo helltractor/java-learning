@@ -31,4 +31,5 @@ public class LazyPooledConnectionProxy extends AbstractConnectionProxy{
             idleQueue.offer(this);
         }
     }
+    
 }

@@ -20,4 +20,5 @@ public class AddCommand implements Command {
     private void execute(String text) {
         receiver.add(text);
     }
+    
 }

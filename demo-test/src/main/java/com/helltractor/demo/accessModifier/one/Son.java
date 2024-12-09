@@ -11,4 +11,5 @@ public class Son extends FatherDefault{
         son.print();
         System.out.println(son.asset);
     }
+    
 }

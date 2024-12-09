@@ -11,4 +11,5 @@ public class FatherPublic {
     static void print() {
         System.out.println("a public father!");
     }
+    
 }

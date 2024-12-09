@@ -18,4 +18,5 @@ class UserContext implements AutoCloseable {
                 UserContext.getCurrentUser());
         userThreadLocal.remove();
     }
+    
 }

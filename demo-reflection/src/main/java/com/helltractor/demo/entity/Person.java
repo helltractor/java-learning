@@ -30,4 +30,5 @@ public class Person {
     private void privateMethod() {
         System.out.println("私有方法");
     }
+    
 }

@@ -71,5 +71,6 @@ public class LazyDataSource implements DataSource {
 	@Override
 	public int getLoginTimeout() throws SQLException {
 		throw new SQLFeatureNotSupportedException();
-	}
+	    }
+    
 }

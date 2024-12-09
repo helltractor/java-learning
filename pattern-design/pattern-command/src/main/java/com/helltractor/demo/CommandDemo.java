@@ -20,5 +20,6 @@ public class CommandDemo {
 		System.out.println(editor.getState());
 		invoker.undo();
 		System.out.println(editor.getState());
-	}
+	    }
+    
 }

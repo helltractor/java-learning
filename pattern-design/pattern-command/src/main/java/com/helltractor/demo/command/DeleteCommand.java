@@ -21,4 +21,5 @@ public class DeleteCommand implements Command {
     public void undo() {
         receiver.add(text);
     }
+    
 }

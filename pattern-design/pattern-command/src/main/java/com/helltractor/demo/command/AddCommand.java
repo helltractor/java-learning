@@ -28,4 +28,5 @@ public class AddCommand implements Command{
         int length = receiver.getLength();
         receiver.delete(length - deletedText.length(), length);
     }
+    
 }

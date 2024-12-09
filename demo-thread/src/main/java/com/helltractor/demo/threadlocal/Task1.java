@@ -8,4 +8,5 @@ class Task1 {
         }
         System.out.printf("[%s] check user %s...\n", Thread.currentThread().getName(), UserContext.getCurrentUser());
     }
+    
 }

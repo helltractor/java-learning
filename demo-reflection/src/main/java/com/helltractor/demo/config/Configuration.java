@@ -25,4 +25,5 @@ public class Configuration {
     public Message message() {
         return new Message("Hi there!");
     }
+    
 }

@@ -16,4 +16,5 @@ public class GrandFather {
         System.out.println(fatherDefault.asset);
         System.out.println(fatherDefault.wifeNum);
     }
+    
 }

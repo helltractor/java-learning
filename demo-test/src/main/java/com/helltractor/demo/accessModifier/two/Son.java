@@ -15,4 +15,5 @@ public class Son extends FatherPublic {
         System.out.println(son.asset);
 //        System.out.println(son.wifeNum);
     }
+    
 }

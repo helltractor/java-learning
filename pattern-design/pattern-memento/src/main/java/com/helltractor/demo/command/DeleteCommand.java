@@ -14,4 +14,5 @@ public class DeleteCommand implements Command {
     public void execute() {
         receiver.delete();
     }
+    
 }

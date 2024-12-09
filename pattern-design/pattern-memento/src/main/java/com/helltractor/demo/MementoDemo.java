@@ -25,5 +25,6 @@ public class MementoDemo {
 		
 		invoker.undo().redo().invoke(add);
 		System.out.println(editor.getState());
-	}
+	    }
+    
 }

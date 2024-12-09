@@ -21,4 +21,5 @@ public class Girl implements IBuy {
         System.out.printf("女孩花了%s元买了一件漂亮的衣服%n", price);
         return "衣服";
     }
+    
 }

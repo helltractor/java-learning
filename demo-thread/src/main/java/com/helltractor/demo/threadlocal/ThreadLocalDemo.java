@@ -15,6 +15,6 @@ public class ThreadLocalDemo {
         es.shutdown();
         InheritableThreadLocal<String> inheritableThreadLocal = new InheritableThreadLocal<>();
     }
+    
 }
-
 

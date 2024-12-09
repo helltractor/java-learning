@@ -37,4 +37,5 @@ public class NewThreadDemo {
             System.out.println("Thread-2 is running");
         }
     }
+    
 }

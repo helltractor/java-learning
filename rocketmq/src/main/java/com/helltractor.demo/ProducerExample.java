@@ -53,4 +53,5 @@ public class ProducerExample {
         // 如果不需要再使用Producer，可关闭该实例。
         producer.close();
     }
+    
 }

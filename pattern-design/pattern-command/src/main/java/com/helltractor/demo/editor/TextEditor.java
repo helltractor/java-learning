@@ -59,5 +59,6 @@ public class TextEditor {
 	
 	public void print() {
 		System.out.println(this.buffer.toString());
-	}
+	    }
+    
 }

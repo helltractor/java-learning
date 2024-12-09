@@ -8,4 +8,5 @@ class Task2 {
         }
         System.out.printf("[%s] %s registered ok.\n", Thread.currentThread().getName(), UserContext.getCurrentUser());
     }
+    
 }

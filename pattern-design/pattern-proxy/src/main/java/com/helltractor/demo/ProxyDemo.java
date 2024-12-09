@@ -59,5 +59,6 @@ public class ProxyDemo {
 		try (Connection conn = lazyPoolDataSource.getConnection()) {
 			// 获取到的是同一个Connection
 		}
-	}
+	    }
+    
 }

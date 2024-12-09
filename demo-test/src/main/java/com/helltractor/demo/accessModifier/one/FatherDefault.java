@@ -11,4 +11,5 @@ class FatherDefault {
     static void print() {
         System.out.println("a default father!");
     }
+    
 }

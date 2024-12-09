@@ -123,4 +123,5 @@ public class IntermediateOperationTest {
                 .sorted(Comparator.comparingInt(Person::getAge).reversed())
                 .forEach(System.out::println);
     }
+    
 }

@@ -29,4 +29,5 @@ public class AutoFillTest {
         System.out.println("男孩买到了：" + boyBought);
         System.out.println("女孩买到了：" + girlBought);
     }
+    
 }

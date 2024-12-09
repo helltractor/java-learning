@@ -141,4 +141,5 @@ public class StreamCreationTest {
         List<String> list = List.of("a", "b", "c");
         list.parallelStream().forEach(System.out::println);
     }
+    
 }
