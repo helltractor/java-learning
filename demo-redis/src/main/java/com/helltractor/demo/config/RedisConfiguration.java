@@ -2,9 +2,11 @@ package com.helltractor.demo.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -14,19 +16,23 @@ public class RedisConfiguration{
     
     final static Logger logger = LoggerFactory.getLogger(RedisConfiguration.class);
     
+    @Value("${spring.data.redis.host}")
+    private String host;
+    
+    @Value("${spring.data.redis.port}")
+    private int port;
+    
     /**
      * 创建RedisConnectionFactory对象，当无法使用默认的配置时，可以自定义配置
-     * @return
      */
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
-        return new LettuceConnectionFactory();
+        RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(host, port);
+        return new LettuceConnectionFactory(configuration);
     }
 
     /**
      * 创建RedisTemplate对象
-     * @param redisConnectionFactory
-     * @return
      */
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {

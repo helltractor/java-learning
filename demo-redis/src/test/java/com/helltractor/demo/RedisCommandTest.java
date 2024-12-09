@@ -1,20 +1,9 @@
 package com.helltractor.demo;
 
-import com.helltractor.demo.config.RedisConfiguration;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.*;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.junit.jupiter.Container;
 
 import java.util.List;
 import java.util.Set;
@@ -22,27 +11,13 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-@ContextConfiguration(classes = {RedisConfiguration.class})
-@Testcontainers
-@DirtiesContext
-class RedisCommandTest {
-    
-    final Logger logger = LoggerFactory.getLogger(RedisCommandTest.class);
-    
-    @Value("${spring.data.redis.port}")
-    static int port;
-    
-    @Container
-    static final GenericContainer redis = new GenericContainer("redis:latest")
-            .withExposedPorts(port);
-    
+class RedisCommandTest extends AbstractIntegrationTest {
+
     @Autowired
     RedisTemplate redisTemplate;
     
     @BeforeEach
     void setUp() {
-        logger.debug("RedisTemplate: {}", redisTemplate);
         // clear redis history data
         redisTemplate.getConnectionFactory().getConnection().flushAll();
     }
