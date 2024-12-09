@@ -16,10 +16,10 @@ public class RedisConfiguration{
     
     final static Logger logger = LoggerFactory.getLogger(RedisConfiguration.class);
     
-    @Value("${spring.redis.host}")
+    @Value("${spring.data.redis.host}")
     private String host;
     
-    @Value("${spring.redis.port}")
+    @Value("${spring.data.redis.port}")
     private int port;
     
     /**
