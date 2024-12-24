@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: cloud-grpc-server
+  cloud:
+    consul:
+      discovery:
+        register: true
+        hostname: localhost
+        port: 8500
+
+grpc:
+  server:
+    port: 9898
+  client:
+    cloud-grpc-server:
+      address: 'discovery:///cloud-grpc-server'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext

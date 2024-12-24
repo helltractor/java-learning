@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.8</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.helltractor.demo</groupId>
+    <artifactId>grpc-spring</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <name>grpc-spring</name>
+    <description>Grpc Spring Example</description>
+
+    <modules>
+        <module>grpc-lib</module>
+        <module>grpc-common</module>
+        <module>cloud-grpc-client</module>
+        <module>cloud-grpc-server</module>
+    </modules>
+
+    <properties>
+        <revision>1.0-SNAPSHOT</revision>
+        <java.version>17</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <spring-boot.version>3.2.8</spring-boot.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
+        <grpc-spring.version>3.1.0.RELEASE</grpc-spring.version>
+        <grpc-spring.version>3.1.0.RELEASE</grpc-spring.version>
+        <grpc.version>1.63.0</grpc.version>
+        <lombok.version>1.18.30</lombok.version>
+        <jsonwebtoken.version>0.12.1</jsonwebtoken.version>
+        <protobuf.version>3.23.4</protobuf.version>
+        <protobuf-plugin.version>0.6.1</protobuf-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

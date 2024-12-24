@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.helltractor.demo.proto";
+option java_outer_classname = "HelloWorldProto";
+
+// The greeting service definition
+service SimpleService {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {
+  }
+  // Sends another greeting
+  rpc SayHelloAndBye (HelloRequest) returns (HelloAndByeReply) {
+  }
+}
+
+// The request message containing the user's name
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+
+// The response message containing the greetings and byes
+message HelloAndByeReply {
+  string message = 1;
+}
