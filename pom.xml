@@ -12,22 +12,22 @@
 
     <groupId>com.helltractor.demo</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>demo-aspectj</module>
         <module>demo-common</module>
+        <module>demo-consul</module>
         <module>demo-mybatis</module>
         <module>demo-redis</module>
         <module>demo-reflection</module>
         <module>demo-stream</module>
-        <module>demo-test</module>
         <module>demo-thread</module>
     </modules>
 
     <properties>
-        <project.version>1.0-SNAPSHOT</project.version>
+        <revision>1.0-SNAPSHOT</revision>
         <java.version>21</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
