@@ -26,3 +26,15 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+
+      - name: Build grpc-spring
+        run: mvn clean install
+        working-directory: ./grpc-spring
+
+      - name: Build pattern-design
+        run: mvn clean install
+        working-directory: ./pattern-design
+
+      - name: Build rocketmq
+        run: mvn clean install
+        working-directory: ./rocketmq
