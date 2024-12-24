@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: demo-consul
+  cloud:
+    consul:
+      discovery:
+        register: true
+        hostname: localhost
+        port: 8500
