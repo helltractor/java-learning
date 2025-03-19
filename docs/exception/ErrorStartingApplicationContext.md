@@ -1,6 +1,6 @@
 # Error starting ApplicationContext
 
->To display the condition evaluation report re-run your application with 'debug' enabled.
+> To display the condition evaluation report re-run your application with 'debug' enabled.
 
 ## Case 1 : Bean not found
 
@@ -50,6 +50,7 @@ mybatis:
 1. 在启动类上加上@MapperScan或者@ComponentScan annotation，手动指定application类要扫描哪些包下的注解。
 
 ```java
+
 @SpringBootApplication
 @MapperScan("org.xxx.mapper")
 public class Application {
@@ -62,7 +63,9 @@ public class Application {
 ```
 
 2. 或在mapper interface 加上@Mapper annotation。
+
 ```java
+
 @Mapper
 public interface UserMapper {
     List<User> selectAll();
@@ -74,8 +77,9 @@ public interface UserMapper {
 * [springboot 工程启动报错之Consider defining a bean of type ‘XXX’ in your configuration.](https://www.cnblogs.com/nananana/p/9333917.html)
 
 ## Case 2 : Invalid value type for attribute 'factoryBeanObjectType'
- 
-factory bean 的对象类型属性 'factoryBeanObjectType' 的值无效。这个项目中使用的是 spring 和 mybatis-spring, 但是 mybatis-spring 的版本过低，只能通过降低 spring 版本解决问题。
+
+factory bean 的对象类型属性 'factoryBeanObjectType' 的值无效。这个项目中使用的是 spring 和 mybatis-spring, 但是
+mybatis-spring 的版本过低，只能通过降低 spring 版本解决问题。
 
 ### Description
 
@@ -102,5 +106,6 @@ java.lang.IllegalArgumentException: Invalid value type for attribute 'factoryBea
 ```
 
 ### Reference
+
 * [MyBatis-Spring](http://doc.vrd.net.cn/mybatis/spring/zh/index.html)
 * [MyBatis-Spring-Boot-Starter Introduction](https://github.com/mybatis/spring-boot-starter/blob/master/mybatis-spring-boot-autoconfigure/src/site/zh_CN/markdown/index.md)

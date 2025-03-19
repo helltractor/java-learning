@@ -12,7 +12,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
-public class RedisConfiguration{
+public class RedisConfiguration {
     
     final static Logger logger = LoggerFactory.getLogger(RedisConfiguration.class);
     
@@ -30,7 +30,7 @@ public class RedisConfiguration{
         RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(host, port);
         return new LettuceConnectionFactory(configuration);
     }
-
+    
     /**
      * 创建RedisTemplate对象
      */

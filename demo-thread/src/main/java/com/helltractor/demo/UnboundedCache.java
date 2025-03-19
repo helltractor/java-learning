@@ -29,7 +29,7 @@ public class UnboundedCache<K, V> {
         lock.readLock().lock();
         V value;
         try {
-            value =  weakHashMap.get(key);
+            value = weakHashMap.get(key);
             String log = String.format("%s get data %s:%s", Thread.currentThread().getName(), key, value);
             System.out.println(log);
         } finally {

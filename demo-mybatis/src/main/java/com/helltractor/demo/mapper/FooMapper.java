@@ -6,9 +6,10 @@ import java.time.LocalDateTime;
 
 @Mapper
 public interface FooMapper {
-
+    
     /**
      * 获取当前时间
+     *
      * @return
      */
     LocalDateTime now();

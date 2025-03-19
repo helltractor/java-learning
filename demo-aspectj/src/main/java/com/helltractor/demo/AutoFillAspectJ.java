@@ -12,28 +12,28 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class AutoFillAspectJ {
-
+    
     @Pointcut("execution(* com.helltractor.demo.service.IBuy.buy(..))")
     public void aopPointCut() {
-
+    
     }
-
+    
     @Before("aopPointCut()")
     // @Before("execution(* org.aopdemo.service.IBuy.buy(..)) && within(org.aopdemo.entity.*) && bean(girl)")
     public void haha() {
         System.out.println("男孩女孩都买了自己喜欢的东西");
     }
-
+    
     @After("aopPointCut()")
     public void hehe() {
         System.out.println("After ...");
     }
-
+    
     @AfterReturning("aopPointCut()")
     public void xixi() {
         System.out.println("AfterReturning ...");
     }
-
+    
     @Around("aopPointCut()")
     public void xxx(ProceedingJoinPoint pj) {
         try {
@@ -44,11 +44,11 @@ public class AutoFillAspectJ {
             throwable.printStackTrace();
         }
     }
-
+    
     @Pointcut("execution(* com.helltractor.demo.service.IBuy.buyPrice(double)) && args(price) && bean(girl)")
     public void gift(double price) {
     }
-
+    
     /**
      * around notice
      * @param pj, price

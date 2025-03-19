@@ -7,6 +7,6 @@ package com.helltractor.demo.service;
 
 public interface IBuy {
     String buy();
-
+    
     String buyPrice(double price);
 }

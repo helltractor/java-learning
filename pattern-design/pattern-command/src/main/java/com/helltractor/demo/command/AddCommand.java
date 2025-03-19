@@ -2,19 +2,19 @@ package com.helltractor.demo.command;
 
 import com.helltractor.demo.editor.TextEditor;
 
-public class AddCommand implements Command{
+public class AddCommand implements Command {
     
     private TextEditor receiver;
     private String text;
     private String deletedText;
     
-    public AddCommand(TextEditor receiver, String text){
+    public AddCommand(TextEditor receiver, String text) {
         this.receiver = receiver;
         this.text = text;
     }
     
     @Override
-    public void execute(){
+    public void execute() {
         execute(text);
     }
     
@@ -24,7 +24,7 @@ public class AddCommand implements Command{
     }
     
     @Override
-    public void undo(){
+    public void undo() {
         int length = receiver.getLength();
         receiver.delete(length - deletedText.length(), length);
     }

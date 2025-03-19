@@ -20,17 +20,17 @@ public class ReflectionApplication {
 //        Order order = new Order(customer, address);
 //        order.getCustomer().printName();
 //        order.getAddress().printPostCode();
-
+        
         Container container = new Container();
         container.init();
         String className = "com.helltractor.demo.entity.Order";
         Class<?> clazz = Class.forName(className);
         Object obj = container.createInstance(clazz);
-
+        
         String name = "address";
         Field field = clazz.getDeclaredField(name);
         field.setAccessible(true);
-
+        
         Object fieldObj = field.get(obj);
         Method[] methods = fieldObj.getClass().getDeclaredMethods();
         for (Method method : methods) {

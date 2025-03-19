@@ -1,6 +1,6 @@
 # SQLException
 
-## Case 1 : null,  message from server: "Host 'localhost' is not allowed to connect to this MySQL server"
+## Case 1 : null, message from server: "Host 'localhost' is not allowed to connect to this MySQL server"
 
 连接数据库的时候报如下错误，原因是本机的ip未被允许访问该数据库服务。我们可以修改为所有ip都可以访问。
 

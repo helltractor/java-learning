@@ -5,11 +5,11 @@ import java.sql.SQLException;
 import java.util.Queue;
 import java.util.function.Supplier;
 
-public class LazyPooledConnectionProxy extends AbstractConnectionProxy{
+public class LazyPooledConnectionProxy extends AbstractConnectionProxy {
     
-    private Supplier<Connection> supplier;
     Connection target;
     Queue<LazyPooledConnectionProxy> idleQueue;
+    private Supplier<Connection> supplier;
     
     public LazyPooledConnectionProxy(Queue<LazyPooledConnectionProxy> idleQueue, Supplier<Connection> supplier) {
         this.idleQueue = idleQueue;

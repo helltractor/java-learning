@@ -15,14 +15,14 @@ public class GlobalInterceptorConfiguration {
         return new LogGrpcInterceptor();
     }
     
-    @GrpcGlobalServerInterceptor
-    JwtGrpcServerInterceptor jwtGrpcServerInterceptor() {
-        return new JwtGrpcServerInterceptor();
-    }
-    
     @GrpcGlobalClientInterceptor
     JwtGrpcClientInterceptor jwtGrpcClientInterceptor() {
         return new JwtGrpcClientInterceptor();
+    }
+    
+    @GrpcGlobalServerInterceptor
+    JwtGrpcServerInterceptor jwtGrpcServerInterceptor() {
+        return new JwtGrpcServerInterceptor();
     }
     
 }

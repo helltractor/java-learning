@@ -7,13 +7,13 @@ public class AddCommand implements Command {
     private TextEditor receiver;
     private String text;
     
-    public AddCommand(TextEditor receiver, String text){
+    public AddCommand(TextEditor receiver, String text) {
         this.receiver = receiver;
         this.text = text;
     }
     
     @Override
-    public void execute(){
+    public void execute() {
         execute(text);
     }
     

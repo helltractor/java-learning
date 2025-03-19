@@ -12,7 +12,7 @@ public class ReentrantReadWriteLockDemo {
         public void run() {
             Random random = new Random();
             for (int i = 0; i < 3; i++) {
-               cache.put(i, random.nextInt(100));
+                cache.put(i, random.nextInt(100));
             }
         }
     }

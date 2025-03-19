@@ -11,6 +11,6 @@ package com.helltractor.demo.enumeration;
  */
 public enum OperationType {
     INSERT,
-
+    
     UPDATE,
 }

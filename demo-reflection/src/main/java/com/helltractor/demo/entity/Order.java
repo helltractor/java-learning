@@ -13,17 +13,17 @@ public class Order {
     
     public Order() {
     }
-
+    
     @Autowired
     public Order(Customer customer, Address address) {
         this.customer = customer;
         this.address = address;
     }
-
+    
     public Customer getCustomer() {
         return customer;
     }
-
+    
     public Address getAddress() {
         return address;
     }

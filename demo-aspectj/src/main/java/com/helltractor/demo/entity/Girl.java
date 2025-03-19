@@ -15,7 +15,7 @@ public class Girl implements IBuy {
         System.out.println("女孩买了一件漂亮的衣服");
         return "衣服";
     }
-
+    
     @Override
     public final String buyPrice(double price) {
         System.out.printf("女孩花了%s元买了一件漂亮的衣服%n", price);

@@ -17,11 +17,12 @@ import java.util.Map;
 public class Container {
     private Map<Class<?>, Method> methods;
     private Object config;
-
+    
     private Map<Class<?>, Object> services;
-
+    
     /**
      * Initialize the container
+     *
      * @throws ClassNotFoundException
      * @throws NoSuchMethodException
      * @throws InvocationTargetException
@@ -42,9 +43,10 @@ public class Container {
         }
         this.config = clazz.getConstructor().newInstance();
     }
-
+    
     /**
      * Get service instance by class
+     *
      * @param clazz
      * @return
      * @throws InvocationTargetException
@@ -63,9 +65,10 @@ public class Container {
         }
         return null;
     }
-
+    
     /**
      * Create instance
+     *
      * @param clazz
      * @return
      * @throws IllegalAccessException

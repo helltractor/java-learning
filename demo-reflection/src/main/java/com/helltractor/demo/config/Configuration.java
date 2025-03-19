@@ -11,17 +11,17 @@ import com.helltractor.demo.entity.Message;
  */
 
 public class Configuration {
-
+    
     @Bean
     public Customer customer() {
         return new Customer("John", "123132@121");
     }
-
+    
     @Bean
     public Address address() {
         return new Address("123 Main Street", "12345");
     }
-
+    
     public Message message() {
         return new Message("Hi there!");
     }

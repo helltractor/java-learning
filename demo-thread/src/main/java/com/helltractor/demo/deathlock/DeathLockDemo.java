@@ -8,11 +8,17 @@ public class DeathLockDemo {
     private Thread t2 = createThread("Thread-2", resource2, resource1);
     private Thread t3 = createThread("Thread-3", resource1, resource2);
     
+    public static void main(String[] args) {
+        DeathLockDemo demo = new DeathLockDemo();
+//        demo.deathLock();
+        demo.breakDeathLock();
+    }
+    
     public void deathLock() {
         t1.start();
         t2.start();
     }
-
+    
     public void breakDeathLock() {
         t1.start();
         t3.start();
@@ -33,12 +39,6 @@ public class DeathLockDemo {
                 }
             }
         }, name);
-    }
-    
-    public static void main(String[] args) {
-        DeathLockDemo demo = new DeathLockDemo();
-//        demo.deathLock();
-         demo.breakDeathLock();
     }
     
 }

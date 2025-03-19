@@ -5,22 +5,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class WaitAndNotifyDemo {
-    private static class TaskQueue {
-        private Queue<String> queue = new LinkedList<>();
-        
-        public synchronized void addTask(String s) {
-            this.queue.add(s);
-            this.notifyAll();
-        }
-        
-        public synchronized String getTask() throws InterruptedException {
-            while (queue.isEmpty()) {
-                this.wait();
-            }
-            return queue.remove();
-        }
-    }
-    
     public static void main(String[] args) throws InterruptedException {
         var q = new TaskQueue();
         var ts = new ArrayList<Thread>();
@@ -56,6 +40,22 @@ public class WaitAndNotifyDemo {
         Thread.sleep(100);
         for (var t : ts) {
             t.interrupt();
+        }
+    }
+    
+    private static class TaskQueue {
+        private Queue<String> queue = new LinkedList<>();
+        
+        public synchronized void addTask(String s) {
+            this.queue.add(s);
+            this.notifyAll();
+        }
+        
+        public synchronized String getTask() throws InterruptedException {
+            while (queue.isEmpty()) {
+                this.wait();
+            }
+            return queue.remove();
         }
     }
     

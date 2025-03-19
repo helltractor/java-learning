@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @DirtiesContext
 class FooMapperTest {
-
+    
     final Logger logger = LoggerFactory.getLogger(getClass());
     
     @Autowired

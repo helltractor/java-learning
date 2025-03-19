@@ -7,7 +7,7 @@ import com.helltractor.demo.editor.TextEditor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Invoker{
+public class Invoker {
     
     private List<String> backupLib;
     private TextEditor receiver;

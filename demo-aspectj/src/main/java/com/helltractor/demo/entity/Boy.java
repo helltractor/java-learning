@@ -15,7 +15,7 @@ public class Boy implements IBuy {
         System.out.println("男孩买了一个游戏机");
         return "游戏机";
     }
-
+    
     @Override
     public String buyPrice(double price) {
         System.out.println(String.format("男孩花了%s元买了一个游戏机", price));
