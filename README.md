@@ -1,11 +1,21 @@
 # Java-Learning
 
-## [aspectj](https://github.com/Helltractor/Java-learning/blob/d84117e2fc57b8b2aa052a5806c4ada998dea98d/aspectj)
+## [demo-aspectj](./demo-aspectj)
 
-## [redis](https://github.com/Helltractor/Java-learning/blob/d84117e2fc57b8b2aa052a5806c4ada998dea98d/redis)
+## [demo-consul](./demo-consul)
 
-## [reflection](https://github.com/Helltractor/Java-learning/blob/d84117e2fc57b8b2aa052a5806c4ada998dea98d/reflection)
+## [demo-mybatis](./demo-mybatis)
 
-## [spring-mybatis](https://github.com/Helltractor/Java-learning/blob/d84117e2fc57b8b2aa052a5806c4ada998dea98d/spring-mybatis)
+## [demo-redis](./demo-redis)
 
-## [stream](https://github.com/Helltractor/Java-learning/blob/a394857dc91483f06dbb05d0dfd3224854a15b7d/stream)
+## [demo-reflection](./demo-reflection)
+
+## [demo-stream](./demo-stream)
+
+## [demo-thread](./demo-thread)
+
+## [pattern-design](./pattern-design)
+
+## [rocketmq](./rocketmq)
+
+## [sentinel](./sentinel)
