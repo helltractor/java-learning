@@ -20,10 +20,12 @@
         <module>demo-common</module>
         <module>demo-consul</module>
         <module>demo-mybatis</module>
-        <module>demo-redis</module>
+        <module>demo-redis-spring-data</module>
         <module>demo-reflection</module>
         <module>demo-stream</module>
         <module>demo-thread</module>
+        <module>demo-redis-lettuce</module>
+        <module>demo-util</module>
     </modules>
 
     <properties>
