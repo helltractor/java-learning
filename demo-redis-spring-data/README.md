@@ -1,4 +1,4 @@
-## Demo-Redis
+## Demo-Redis-Spring-Data
 
 ### Tutorial
 

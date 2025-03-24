@@ -14,7 +14,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class RedisConfiguration {
     
-    final static Logger logger = LoggerFactory.getLogger(RedisConfiguration.class);
+    final Logger logger = LoggerFactory.getLogger(RedisConfiguration.class);
     
     @Value("${spring.data.redis.host}")
     private String host;
@@ -22,25 +22,19 @@ public class RedisConfiguration {
     @Value("${spring.data.redis.port}")
     private int port;
     
-    /**
-     * 创建RedisConnectionFactory对象，当无法使用默认的配置时，可以自定义配置
-     */
     @Bean
     public RedisConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration configuration = new RedisStandaloneConfiguration(host, port);
         return new LettuceConnectionFactory(configuration);
     }
-    
-    /**
-     * 创建RedisTemplate对象
-     */
+
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         logger.info("Start create redisTemplate： {}", redisConnectionFactory);
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
-        // 设置redis的连接工厂对象
+        // set redis connection factory object
         redisTemplate.setConnectionFactory(redisConnectionFactory);
-        // 设置redis key的序列化器
+        // set redis key serializer
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         return redisTemplate;
     }
