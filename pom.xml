@@ -26,6 +26,7 @@
         <module>demo-thread</module>
         <module>demo-redis-lettuce</module>
         <module>demo-util</module>
+        <module>demo-kafka</module>
     </modules>
 
     <properties>
