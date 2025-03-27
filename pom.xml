@@ -43,7 +43,7 @@
         <commons.lang.version>2.6</commons.lang.version>
         <aspectj.version>1.9.4</aspectj.version>
         <logback.version>1.5.6</logback.version>
-        <lombok.version>1.18.22</lombok.version>
+        <lombok.version>1.18.30</lombok.version>
         <!-- test -->
         <mocktio.version>5.14.0</mocktio.version>
         <testcontainers.version>1.20.6</testcontainers.version>
