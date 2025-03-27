@@ -17,7 +17,6 @@
 
     <modules>
         <module>demo-aspectj</module>
-        <module>demo-common</module>
         <module>demo-consul</module>
         <module>demo-mybatis</module>
         <module>demo-redis-spring-data</module>
