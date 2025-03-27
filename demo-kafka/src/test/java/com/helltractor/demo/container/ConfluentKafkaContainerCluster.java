@@ -1,4 +1,4 @@
-package com.helltractor.demo;
+package com.helltractor.demo.container;
 
 import org.apache.kafka.common.Uuid;
 import org.awaitility.Awaitility;
