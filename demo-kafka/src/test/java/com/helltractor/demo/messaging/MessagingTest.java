@@ -1,9 +1,7 @@
 package com.helltractor.demo.messaging;
 
-
 import com.helltractor.demo.ConfluentKafkaContainerCluster;
 import com.helltractor.demo.KafkaApplication;
-import com.helltractor.demo.message.AbstractMessage;
 import com.helltractor.demo.message.TestMessage;
 import com.helltractor.demo.util.IpUtil;
 import org.junit.jupiter.api.AfterEach;
@@ -14,8 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
