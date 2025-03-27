@@ -16,7 +16,7 @@
         <dependency>
             <groupId>com.helltractor.demo</groupId>
             <artifactId>demo-util</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

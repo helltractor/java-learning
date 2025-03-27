@@ -14,11 +14,10 @@
     <artifactId>demo-redis-lettuce</artifactId>
 
     <dependencies>
-
         <dependency>
             <groupId>com.helltractor.demo</groupId>
             <artifactId>demo-util</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
 
