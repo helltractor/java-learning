@@ -1,0 +1,48 @@
+services:
+  mysql-master:
+    container_name: mysql-master
+    image: mysql:5.7.31
+    restart: always
+    ports:
+      - 3307:3306
+    privileged: true
+    volumes:
+      - ./mysql-master/volumes/log:/var/log/mysql
+      - ./mysql-master/volumes/conf/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./mysql-master/volumes/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+#    entrypoint: bash -c "chmod 644 /etc/mysql/my.cnf && exec /usr/local/bin/docker-entrypoint.sh mysqld"
+    command: [
+      '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_general_ci',
+      '--max_connections=3000'
+    ]
+    networks:
+      - mysql_net
+  
+  mysql-slave:
+    container_name: mysql-slave
+    image: mysql:5.7.31
+    restart: always
+    ports:
+      - 3308:3306
+    privileged: true
+    volumes:
+      - ./mysql-slave/volumes/log:/var/log/mysql
+      - ./mysql-slave/volumes/conf/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./mysql-slave/volumes/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+#    entrypoint: bash -c "chmod 644 /etc/mysql/my.cnf && exec /usr/local/bin/docker-entrypoint.sh mysqld"
+    command: [
+      '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_general_ci',
+      '--max_connections=3000'
+    ]
+    networks:
+      - mysql_net
+
+networks:
+  mysql_net:
+    driver: bridge
