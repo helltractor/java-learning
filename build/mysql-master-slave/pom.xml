@@ -5,13 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.helltractor.demo</groupId>
+        <groupId>com.helltractor.build</groupId>
         <artifactId>parent</artifactId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.helltractor.build</groupId>
     <artifactId>mysql-master-slave</artifactId>
 
 </project>
