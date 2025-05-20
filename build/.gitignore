@@ -1,2 +1,4 @@
 **/data/
 **/log/
+
+.flattened-pom.xml
