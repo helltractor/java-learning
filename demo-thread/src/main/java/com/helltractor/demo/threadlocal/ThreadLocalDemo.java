@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class ThreadLocalDemo {
+
     public static void main(String[] args) throws Exception {
         ExecutorService es = Executors.newFixedThreadPool(3);
         String[] users = new String[]{"Bob", "Alice", "Tim", "Mike", "Lily", "Jack", "Bush"};
@@ -15,6 +16,5 @@ public class ThreadLocalDemo {
         es.shutdown();
         InheritableThreadLocal<String> inheritableThreadLocal = new InheritableThreadLocal<>();
     }
-    
-}
 
+}

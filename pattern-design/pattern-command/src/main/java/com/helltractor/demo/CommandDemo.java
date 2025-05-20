@@ -8,7 +8,7 @@ import com.helltractor.demo.editor.TextEditor;
 import com.helltractor.demo.invoker.Invoker;
 
 public class CommandDemo {
-    
+
     public static void main(String[] args) {
         TextEditor editor = new TextEditor();
         Command add = new AddCommand(editor, "Command pattern in text editor.\n");
@@ -21,5 +21,5 @@ public class CommandDemo {
         invoker.undo();
         System.out.println(editor.getState());
     }
-    
+
 }

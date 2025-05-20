@@ -21,9 +21,9 @@ import java.util.Map;
 @EnableKafka
 @Configuration
 public class MessagingConfiguration {
-    
+
     private final Logger logger = LoggerFactory.getLogger(getClass());
-    
+
     private Map<String, Object> producerConfigs(String bootstrapServers) {
         Map<String, Object> configs = new HashMap<>();
         configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
@@ -31,7 +31,7 @@ public class MessagingConfiguration {
         configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         return configs;
     }
-    
+
     private Map<String, Object> consumerConfigs(String bootstrapServers, int batchSize) {
         Map<String, Object> configs = new HashMap<>();
         configs.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, Integer.valueOf(batchSize));
@@ -41,27 +41,27 @@ public class MessagingConfiguration {
         configs.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         return configs;
     }
-    
+
     @Bean
     public KafkaAdmin admin(@Value("${spring.kafka.bootstrap-servers}") String bootstrapServers) {
         Map<String, Object> configs = new HashMap<>();
         configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         return new KafkaAdmin(configs);
     }
-    
+
     @Bean
     public ProducerFactory<String, String> producerFactory(
             @Value("${spring.kafka.bootstrap-servers}") String bootstrapServers) {
         logger.info("init kafka producer from bootstrap servers: {}", bootstrapServers);
         return new DefaultKafkaProducerFactory<>(producerConfigs(bootstrapServers));
     }
-    
+
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate(@Autowired ProducerFactory<String, String> producerFactory) {
         logger.info("init kafka template...");
         return new KafkaTemplate<>(producerFactory);
     }
-    
+
     @Bean
     public ConsumerFactory<String, String> consumerFactory(
             @Value("${spring.kafka.bootstrap-servers}") String bootstrapServers,
@@ -70,7 +70,7 @@ public class MessagingConfiguration {
                 Integer.valueOf(batchSize));
         return new DefaultKafkaConsumerFactory<>(consumerConfigs(bootstrapServers, batchSize));
     }
-    
+
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory(
             @Autowired ConsumerFactory<String, String> consumerFactory) {

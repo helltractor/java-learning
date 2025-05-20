@@ -1,13 +1,13 @@
 package com.helltractor.demo.threadlocal;
 
 class Task implements Runnable {
-    
+
     final String username;
-    
+
     public Task(String username) {
         this.username = username;
     }
-    
+
     @Override
     public void run() {
         try (var ctx = new UserContext(this.username)) {
@@ -16,5 +16,5 @@ class Task implements Runnable {
             new Task3().process();
         }
     }
-    
+
 }

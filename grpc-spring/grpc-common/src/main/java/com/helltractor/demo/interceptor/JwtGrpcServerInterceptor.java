@@ -8,10 +8,10 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
 
 public class JwtGrpcServerInterceptor implements ServerInterceptor {
-    
+
     @Override
     public <ReqT, RespT> ServerCall.Listener<ReqT> interceptCall(ServerCall<ReqT, RespT> serverCall,
-                                                                 Metadata metadata, ServerCallHandler<ReqT, RespT> serverCallHandler) {
+            Metadata metadata, ServerCallHandler<ReqT, RespT> serverCallHandler) {
         String value = metadata.get(JwtConstant.AUTHORIZATION_METADATA_KEY);
         Status status = Status.OK;
         if (value == null) {
@@ -35,10 +35,10 @@ public class JwtGrpcServerInterceptor implements ServerInterceptor {
                 return Contexts.interceptCall(ctx, serverCall, metadata, serverCallHandler);
             }
         }
-        
+
         serverCall.close(status, new Metadata());
         return new ServerCall.Listener<ReqT>() {
         };
     }
-    
+
 }

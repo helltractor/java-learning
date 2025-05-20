@@ -1,35 +1,34 @@
 package com.helltractor.demo;
 
-import com.helltractor.demo.entity.Person;
-import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import org.junit.jupiter.api.Test;
+
+import com.helltractor.demo.entity.Person;
+
 /**
  * @Author: helltractor
  * @Date: 2024/5/12 下午3:13
  */
-
 public class IntermediateOperationTest {
-    
+
     private final Person[] people = {
-            new Person(3, "c", "China"),
-            new Person(4, "d", "USA"),
-            new Person(5, "e", "China"),
-            new Person(4, "d", "USA"),
-            new Person(5, "e", "China"),
-    };
-    
+        new Person(3, "c", "China"),
+        new Person(4, "d", "USA"),
+        new Person(5, "e", "China"),
+        new Person(4, "d", "USA"),
+        new Person(5, "e", "China"),};
+
     private final List<List<Person>> peopleGroups = List.of(
             List.of(new Person(3, "c", "China"), new Person(4, "d", "USA")),
             List.of(new Person(5, "e", "China"), new Person(4, "d", "USA")),
             List.of(new Person(5, "e", "China"), new Person(4, "d", "USA"))
     );
-    
+
     /**
      * Stream filter
      */
@@ -39,7 +38,7 @@ public class IntermediateOperationTest {
                 .filter(person -> person.getAge() > 3)
                 .forEach(System.out::println);
     }
-    
+
     /**
      * Stream limit
      */
@@ -52,7 +51,7 @@ public class IntermediateOperationTest {
                 .limit(6)
                 .forEach(System.out::println);
     }
-    
+
     /**
      * Stream skip
      */
@@ -65,7 +64,7 @@ public class IntermediateOperationTest {
                 .skip(6)
                 .forEach(System.out::println);
     }
-    
+
     /**
      * Stream distinct
      */
@@ -75,7 +74,7 @@ public class IntermediateOperationTest {
                 .distinct()
                 .forEach(System.out::println);
     }
-    
+
     /**
      * Stream map
      */
@@ -85,7 +84,7 @@ public class IntermediateOperationTest {
                 .map(Person::getName)
                 .forEach(System.out::println);
     }
-    
+
     /**
      * Stream mapToInt
      */
@@ -94,9 +93,9 @@ public class IntermediateOperationTest {
         IntStream intStream = Arrays.stream(people)
                 .mapToInt(Person::getAge);
         intStream.forEach(System.out::println);
-        
+
     }
-    
+
     /**
      * Stream flatMap
      */
@@ -110,7 +109,7 @@ public class IntermediateOperationTest {
                 .map(Person::getName)
                 .forEach(System.out::println);
     }
-    
+
     /**
      * Stream sorted
      */
@@ -123,5 +122,5 @@ public class IntermediateOperationTest {
                 .sorted(Comparator.comparingInt(Person::getAge).reversed())
                 .forEach(System.out::println);
     }
-    
+
 }

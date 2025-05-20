@@ -5,14 +5,14 @@ import java.sql.SQLException;
 import java.util.function.Supplier;
 
 public class LazyConnectionProxy extends AbstractConnectionProxy {
-    
+
     private Supplier<Connection> supplier;
     private Connection target = null;
-    
+
     public LazyConnectionProxy(Supplier<Connection> supplier) {
         this.supplier = supplier;
     }
-    
+
     @Override
     public void close() throws SQLException {
         if (target != null) {
@@ -20,7 +20,7 @@ public class LazyConnectionProxy extends AbstractConnectionProxy {
             super.close();
         }
     }
-    
+
     @Override
     protected Connection getRealConnection() {
         if (target == null) {
@@ -28,5 +28,5 @@ public class LazyConnectionProxy extends AbstractConnectionProxy {
         }
         return target;
     }
-    
+
 }

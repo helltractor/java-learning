@@ -3,7 +3,14 @@ package com.helltractor.demo;
 import com.helltractor.demo.entity.Person;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -13,15 +20,12 @@ import java.util.stream.Stream;
  * @Author: helltractor
  * @Date: 2024/5/12 下午3:14
  */
-
 /**
- * Search and match: Short-circuiting operations
- * 短回路操作， 命中目标结束操作
- * allMatch, anyMatch, noneMatch
- * findFirst, findAny
+ * Search and match: Short-circuiting operations 短回路操作， 命中目标结束操作 allMatch,
+ * anyMatch, noneMatch findFirst, findAny
  */
 class SearchAndMatch {
-    
+
     private final List<Person> people = List.of(
             new Person(3, "c", "China"),
             new Person(4, "d", "USA"),
@@ -29,7 +33,7 @@ class SearchAndMatch {
             new Person(4, "d", "USA"),
             new Person(5, "e", "China")
     );
-    
+
     /**
      * Stream allMatch
      */
@@ -39,7 +43,7 @@ class SearchAndMatch {
                 .allMatch(person -> person.getAge() > 3);
         System.out.println(result);
     }
-    
+
     /**
      * Stream anyMatch
      */
@@ -49,7 +53,7 @@ class SearchAndMatch {
                 .anyMatch(person -> person.getAge() > 3);
         System.out.println(result);
     }
-    
+
     /**
      * Stream noneMatch
      */
@@ -59,7 +63,7 @@ class SearchAndMatch {
                 .noneMatch(person -> person.getAge() > 3);
         System.out.println(result);
     }
-    
+
     /**
      * Stream findFirst
      */
@@ -68,7 +72,7 @@ class SearchAndMatch {
         Optional<Person> optionalPerson = people.stream().findFirst();
         optionalPerson.ifPresent(System.out::println);
     }
-    
+
     /**
      * Stream findAny
      */
@@ -77,16 +81,14 @@ class SearchAndMatch {
         Optional<Person> optionalPerson = people.stream().findAny();
         optionalPerson.ifPresent(System.out::println);
     }
-    
+
 }
 
 /**
- * Aggregation operations
- * 聚合操作，统计元素
- * count max min sum average
+ * Aggregation operations 聚合操作，统计元素 count max min sum average
  */
 class Aggregation {
-    
+
     private final List<Person> people = List.of(
             new Person(3, "c", "China"),
             new Person(4, "d", "USA"),
@@ -94,7 +96,7 @@ class Aggregation {
             new Person(4, "d", "USA"),
             new Person(5, "e", "China")
     );
-    
+
     /**
      * Stream count
      */
@@ -103,7 +105,7 @@ class Aggregation {
         long count = people.stream().count();
         System.out.println(count);
     }
-    
+
     /**
      * Stream max
      */
@@ -112,7 +114,7 @@ class Aggregation {
         Optional<Person> optionalPerson = people.stream().max((p1, p2) -> p1.getAge() - p2.getAge());
         optionalPerson.ifPresent(System.out::println);
     }
-    
+
     /**
      * Stream min
      */
@@ -121,7 +123,7 @@ class Aggregation {
         Optional<Person> optionalPerson = people.stream().min((p1, p2) -> p1.getAge() - p2.getAge());
         optionalPerson.ifPresent(System.out::println);
     }
-    
+
     /**
      * Stream sum
      */
@@ -130,7 +132,7 @@ class Aggregation {
         int sum = people.stream().mapToInt(Person::getAge).sum();
         System.out.println(sum);
     }
-    
+
     /**
      * Stream average
      */
@@ -139,7 +141,7 @@ class Aggregation {
         OptionalDouble average = people.stream().mapToInt(Person::getAge).average();
         average.ifPresent(System.out::println);
     }
-    
+
     /**
      * Stream reduce
      */
@@ -147,18 +149,18 @@ class Aggregation {
     public void reduce() {
         int sum = people.stream().map(Person::getAge).reduce(0, Integer::sum);
         System.out.println(sum);
-        
+
         String s = people.stream().map(Person::getName).reduce("", String::concat);
         System.out.println(s);
-        
+
         String s1 = people.stream().map(Person::getName).reduce("", (s2, s3) -> s2 + s3 + ',');
         System.out.println(s1);
     }
-    
+
 }
 
 class Collect {
-    
+
     private final List<Person> people = List.of(
             new Person(3, "c", "China"),
             new Person(4, "d", "USA"),
@@ -166,7 +168,7 @@ class Collect {
             new Person(4, "d", "USA"),
             new Person(5, "e", "China")
     );
-    
+
     /**
      * Stream toMap
      */
@@ -179,7 +181,7 @@ class Collect {
         ));
         System.out.println(map);
     }
-    
+
     /**
      * Stream groupingBy
      */
@@ -188,7 +190,7 @@ class Collect {
         Map<Integer, List<Person>> groupByAge = people.stream().collect(Collectors.groupingBy(Person::getAge));
         System.out.println(groupByAge);
     }
-    
+
     /**
      * Stream partitioningBy
      */
@@ -197,7 +199,7 @@ class Collect {
         Map<Boolean, List<Person>> partitionByAge = people.stream().collect(Collectors.partitioningBy(person -> person.getAge() > 3));
         System.out.println(partitionByAge);
     }
-    
+
     /**
      * Stream joining
      */
@@ -206,7 +208,7 @@ class Collect {
         String joinedName = people.stream().map(Person::getName).collect(Collectors.joining(","));
         System.out.println(joinedName);
     }
-    
+
     /**
      * Stream summarizingInt
      */
@@ -216,9 +218,10 @@ class Collect {
         System.out.println(ageSummary.getAverage());
         System.out.println(ageSummary.getMax());
     }
-    
+
     /**
-     * use Collect.of(Supplier, Accumulator, Combiner, Finisher) to implement Collectors.toList
+     * use Collect.of(Supplier, Accumulator, Combiner, Finisher) to implement
+     * Collectors.toList
      */
     public List<Person> collectPeople(Stream<Person> stream) {
         return stream.collect(Collector.of(
@@ -242,7 +245,7 @@ class Collect {
                 // Finisher
                 Collector.Characteristics.IDENTITY_FINISH));
     }
-    
+
     @Test
     public void toListByCollector() {
         List<Person> collect = collectPeople(people.stream());
@@ -250,9 +253,10 @@ class Collect {
         List<Person> parallelCollect = collectPeople(people.parallelStream());
         parallelCollect.forEach(System.out::println);
     }
-    
+
     /**
-     * use Collector.of(Supplier, Accumulator, Combiner, Finisher) to implement Collectors.toMap
+     * use Collector.of(Supplier, Accumulator, Combiner, Finisher) to implement
+     * Collectors.toMap
      */
     @Test
     public void toMapByCollector() {
@@ -274,9 +278,9 @@ class Collect {
                             + System.lineSeparator() + "left: " + left + " Thread: " + Thread.currentThread().getName()
                             + System.lineSeparator() + "right: " + right + " Thread: " + Thread.currentThread().getName());
                     right.forEach((key, value) -> left.merge(key, value, (list, newList) -> {
-                        list.addAll(newList);
-                        return list;
-                    }));
+                list.addAll(newList);
+                return list;
+            }));
                     return left;
                 },
                 // Finisher
@@ -287,7 +291,7 @@ class Collect {
         for (Map.Entry<String, List<Person>> entry : collect.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
-        
+
         int size = people.parallelStream().collect(Collector.of(
                 // Supplier
                 HashMap<String, List<Person>>::new,
@@ -302,9 +306,9 @@ class Collect {
                             + System.lineSeparator() + "left: " + left + " Thread: " + Thread.currentThread().getName()
                             + System.lineSeparator() + "right: " + right + " Thread: " + Thread.currentThread().getName());
                     right.forEach((key, value) -> left.merge(key, value, (list, newList) -> {
-                        list.addAll(newList);
-                        return list;
-                    }));
+                list.addAll(newList);
+                return list;
+            }));
                     return left;
                 },
                 // Finisher
@@ -312,12 +316,11 @@ class Collect {
         ));
         System.out.println(size);
     }
-    
+
     /**
-     * use Collector.of(Supplier, Accumulator, Combiner, Finisher) to implement Collectors.toConcurrentMap
-     * 使用线程安全的数据容器： ConcurrentHashMap
-     * List 数据源有序，策略会忽略CONCURRENT特性
-     * Set 数据源无序，策略会忽略UNORDERED特性, 但是会保留CONCURRENT特性
+     * use Collector.of(Supplier, Accumulator, Combiner, Finisher) to implement
+     * Collectors.toConcurrentMap 使用线程安全的数据容器： ConcurrentHashMap List
+     * 数据源有序，策略会忽略CONCURRENT特性 Set 数据源无序，策略会忽略UNORDERED特性, 但是会保留CONCURRENT特性
      */
     @Test
     public void toConcurrentMapByCollector() {
@@ -346,8 +349,8 @@ class Collect {
                 Collector.Characteristics.UNORDERED,
                 Collector.Characteristics.CONCURRENT
         ));
-        
+
         System.out.println(collect);
     }
-    
+
 }

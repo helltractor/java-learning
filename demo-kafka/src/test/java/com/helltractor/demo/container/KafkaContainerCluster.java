@@ -21,15 +21,15 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Provides an easy way to launch a Kafka cluster with multiple brokers.
  */
 public class KafkaContainerCluster implements Startable {
-    
+
     private final int brokersNum;
-    
+
     private final Network network;
-    
+
     private final GenericContainer<?> zookeeper;
-    
+
     private final Collection<KafkaContainer> brokers;
-    
+
     public KafkaContainerCluster(String confluentPlatformVersion, int brokersNum, int internalTopicsRf) {
         if (brokersNum < 0) {
             throw new IllegalArgumentException("brokersNum '" + brokersNum + "' must be greater than 0");
@@ -39,18 +39,18 @@ public class KafkaContainerCluster implements Startable {
                     "internalTopicsRf '" + internalTopicsRf + "' must be less than brokersNum and greater than 0"
             );
         }
-        
+
         this.brokersNum = brokersNum;
         this.network = Network.newNetwork();
-        
-        this.zookeeper =
-                new GenericContainer<>(DockerImageName.parse("confluentinc/cp-zookeeper").withTag(confluentPlatformVersion))
+
+        this.zookeeper
+                = new GenericContainer<>(DockerImageName.parse("confluentinc/cp-zookeeper").withTag(confluentPlatformVersion))
                         .withNetwork(network)
                         .withNetworkAliases("zookeeper")
                         .withEnv("ZOOKEEPER_CLIENT_PORT", String.valueOf(KafkaContainer.ZOOKEEPER_PORT));
-        
-        this.brokers =
-                IntStream
+
+        this.brokers
+                = IntStream
                         .range(0, this.brokersNum)
                         .mapToObj(brokerNum -> {
                             return new KafkaContainer(
@@ -69,43 +69,43 @@ public class KafkaContainerCluster implements Startable {
                         })
                         .collect(Collectors.toList());
     }
-    
+
     public Collection<KafkaContainer> getBrokers() {
         return this.brokers;
     }
-    
+
     public String getBootstrapServers() {
         return brokers.stream().map(KafkaContainer::getBootstrapServers).collect(Collectors.joining(","));
     }
-    
+
     private Stream<GenericContainer<?>> allContainers() {
         return Stream.concat(this.brokers.stream(), Stream.of(this.zookeeper));
     }
-    
+
     @Override
     @SneakyThrows
     public void start() {
         // sequential start to avoid resource contention on CI systems with weaker hardware
         brokers.forEach(GenericContainer::start);
-        
+
         Awaitility
                 .await()
                 .atMost(Duration.ofSeconds(30))
                 .untilAsserted(() -> {
-                    Container.ExecResult result =
-                            this.zookeeper.execInContainer(
+                    Container.ExecResult result
+                            = this.zookeeper.execInContainer(
                                     "sh",
                                     "-c",
-                                    "zookeeper-shell zookeeper:" +
-                                            KafkaContainer.ZOOKEEPER_PORT +
-                                            " ls /brokers/ids | tail -n 1"
+                                    "zookeeper-shell zookeeper:"
+                                    + KafkaContainer.ZOOKEEPER_PORT
+                                    + " ls /brokers/ids | tail -n 1"
                             );
                     String brokers = result.getStdout();
-                    
+
                     assertThat(brokers.split(",")).hasSize(this.brokersNum);
                 });
     }
-    
+
     @Override
     public void stop() {
         allContainers().parallel().forEach(GenericContainer::stop);

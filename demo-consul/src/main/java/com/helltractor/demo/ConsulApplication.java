@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class ConsulApplication {
-    
+
     public static void main(String[] args) {
         SpringApplication.run(ConsulApplication.class, args);
     }
-    
+
     @GetMapping("/")
     public String home() {
         return "Hello World!";
     }
-    
+
 }

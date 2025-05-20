@@ -8,19 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Invoker {
-    
+
     private List<String> backupLib;
     private TextEditor receiver;
-    
+
     private int index = 0;
-    
+
     private boolean isRedo = false;
-    
+
     public Invoker(TextEditor receiver) {
         this.backupLib = new ArrayList<>(List.of(new String()));
         this.receiver = receiver;
     }
-    
+
     public Invoker invoke(Command c) {
         c.execute();
         if (!(c instanceof CopyCommand)) {//copy命令不备份数据
@@ -33,10 +33,10 @@ public class Invoker {
                 index++;
             }
         }
-        
+
         return this;
     }
-    
+
     public Invoker undo() {
         if (index > 0) {
             index--;
@@ -45,7 +45,7 @@ public class Invoker {
         }
         return this;
     }
-    
+
     public Invoker redo() {
         if (isRedo && index < backupLib.size() - 1) {
             index++;
@@ -53,10 +53,10 @@ public class Invoker {
         }
         return this;
     }
-    
+
     public void restore(int index) {
         String restore = backupLib.get(index);
         receiver.setState(restore);
     }
-    
+
 }

@@ -61,7 +61,7 @@ class KafkaContainerClusterTest {
             testKafkaFunctionality(bootstrapServers, 3, 2);
         }
     }
-    
+
     protected void testKafkaFunctionality(String bootstrapServers, int partitions, int rf) throws Exception {
         try (
                 AdminClient adminClient = AdminClient.create(

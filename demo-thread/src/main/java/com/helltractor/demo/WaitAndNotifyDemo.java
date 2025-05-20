@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class WaitAndNotifyDemo {
+
     public static void main(String[] args) throws InterruptedException {
         var q = new TaskQueue();
         var ts = new ArrayList<Thread>();
@@ -22,7 +23,7 @@ public class WaitAndNotifyDemo {
             t.start();
             ts.add(t);
         }
-        
+
         Thread add = new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 String s = "t-" + Math.random();
@@ -42,15 +43,16 @@ public class WaitAndNotifyDemo {
             t.interrupt();
         }
     }
-    
+
     private static class TaskQueue {
+
         private Queue<String> queue = new LinkedList<>();
-        
+
         public synchronized void addTask(String s) {
             this.queue.add(s);
             this.notifyAll();
         }
-        
+
         public synchronized String getTask() throws InterruptedException {
             while (queue.isEmpty()) {
                 this.wait();
@@ -58,5 +60,5 @@ public class WaitAndNotifyDemo {
             return queue.remove();
         }
     }
-    
+
 }

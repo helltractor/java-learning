@@ -1,25 +1,25 @@
 package com.helltractor.demo.service;
 
-import com.helltractor.demo.annotation.Autowired;
-import com.helltractor.demo.annotation.Bean;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.helltractor.demo.annotation.Autowired;
+import com.helltractor.demo.annotation.Bean;
+
 /**
  * @Author: helltractor
  * @Date: 2024/5/3 18:10
  */
-
 public class Container {
+
     private Map<Class<?>, Method> methods;
     private Object config;
-    
+
     private Map<Class<?>, Object> services;
-    
+
     /**
      * Initialize the container
      *
@@ -43,7 +43,7 @@ public class Container {
         }
         this.config = clazz.getConstructor().newInstance();
     }
-    
+
     /**
      * Get service instance by class
      *
@@ -65,7 +65,7 @@ public class Container {
         }
         return null;
     }
-    
+
     /**
      * Create instance
      *
@@ -91,5 +91,5 @@ public class Container {
         }
         return clazz.getConstructor().newInstance();
     }
-    
+
 }

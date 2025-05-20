@@ -6,10 +6,10 @@ import io.grpc.*;
 import org.springframework.beans.factory.annotation.Value;
 
 public class JwtGrpcClientInterceptor implements ClientInterceptor {
-    
+
     @Value("${spring.application.name}")
     private static String SUBJECT;
-    
+
     @Override
     public <ReqT, RespT> ClientCall<ReqT, RespT> interceptCall(
             MethodDescriptor<ReqT, RespT> methodDescriptor,
@@ -26,5 +26,5 @@ public class JwtGrpcClientInterceptor implements ClientInterceptor {
             }
         };
     }
-    
+
 }

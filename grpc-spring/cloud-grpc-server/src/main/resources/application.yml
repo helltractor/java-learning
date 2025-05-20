@@ -16,7 +16,7 @@ grpc:
     port: 9898
   client:
     cloud-grpc-server:
-      address: 'discovery:///cloud-grpc-server'
+      address: "discovery:///cloud-grpc-server"
       enableKeepAlive: true
       keepAliveWithoutCalls: true
       negotiationType: plaintext

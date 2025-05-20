@@ -8,12 +8,12 @@ import org.testcontainers.utility.DockerImageName;
 
 @SpringBootTest(classes = SpringDataRedisApplication.class)
 abstract class AbstractIntegrationTest {
-    
+
     final static int REDIS_PORT = 6379;
-    
+
     final static GenericContainer<?> redis = new GenericContainer<>(DockerImageName.parse("redis:latest"))
             .withExposedPorts(REDIS_PORT);
-    
+
     @DynamicPropertySource
     static void redisProperties(DynamicPropertyRegistry registry) {
         redis.start();

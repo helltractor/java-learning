@@ -12,9 +12,9 @@ import java.util.List;
 
 @Component
 public class SentinelRuleConfiguration {
-    
+
     private static final Logger logger = LoggerFactory.getLogger(SentinelRuleConfiguration.class);
-    
+
     @PostConstruct
     public void init() {
         logger.info("Load Sentinel Rules start!");
@@ -27,5 +27,5 @@ public class SentinelRuleConfiguration {
         FlowRuleManager.loadRules(flowRules);
         logger.info("Load Sentinel Rules end!");
     }
-    
+
 }

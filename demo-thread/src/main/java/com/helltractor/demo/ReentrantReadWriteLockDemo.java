@@ -3,11 +3,11 @@ package com.helltractor.demo;
 import java.util.Random;
 
 public class ReentrantReadWriteLockDemo {
-    
+
     public static UnboundedCache<Integer, Integer> cache = new UnboundedCache<>();
-    
+
     public class MyThread implements Runnable {
-        
+
         @Override
         public void run() {
             Random random = new Random();
@@ -16,5 +16,5 @@ public class ReentrantReadWriteLockDemo {
             }
         }
     }
-    
+
 }

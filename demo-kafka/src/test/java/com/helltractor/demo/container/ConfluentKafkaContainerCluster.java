@@ -17,13 +17,13 @@ import java.util.stream.IntStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ConfluentKafkaContainerCluster implements Startable {
-    
+
     private final int brokersNum;
-    
+
     private final Network network;
-    
+
     private final Collection<ConfluentKafkaContainer> brokers;
-    
+
     public ConfluentKafkaContainerCluster(String confluentPlatformVersion, int brokersNum, int internalTopicsRf) {
         if (brokersNum < 0) {
             throw new IllegalArgumentException("brokersNum '" + brokersNum + "' must be greater than 0");
@@ -33,19 +33,19 @@ public class ConfluentKafkaContainerCluster implements Startable {
                     "internalTopicsRf '" + internalTopicsRf + "' must be less than brokersNum and greater than 0"
             );
         }
-        
+
         this.brokersNum = brokersNum;
         this.network = Network.newNetwork();
-        
+
         String controllerQuorumVoters = IntStream
                 .range(0, brokersNum)
                 .mapToObj(brokerNum -> String.format("%d@broker-%d:9094", brokerNum, brokerNum))
                 .collect(Collectors.joining(","));
-        
+
         String clusterId = Uuid.randomUuid().toString();
-        
-        this.brokers =
-                IntStream
+
+        this.brokers
+                = IntStream
                         .range(0, brokersNum)
                         .mapToObj(brokerNum -> {
                             return new ConfluentKafkaContainer(
@@ -65,26 +65,26 @@ public class ConfluentKafkaContainerCluster implements Startable {
                         })
                         .collect(Collectors.toList());
     }
-    
+
     public Collection<ConfluentKafkaContainer> getBrokers() {
         return this.brokers;
     }
-    
+
     public String getBootstrapServers() {
         return brokers.stream().map(ConfluentKafkaContainer::getBootstrapServers).collect(Collectors.joining(","));
     }
-    
+
     @Override
     public void start() {
         // Needs to start all the brokers at once
         brokers.parallelStream().forEach(GenericContainer::start);
-        
+
         Awaitility
                 .await()
                 .atMost(Duration.ofSeconds(30))
                 .untilAsserted(() -> {
-                    Container.ExecResult result =
-                            this.brokers.stream()
+                    Container.ExecResult result
+                            = this.brokers.stream()
                                     .findFirst()
                                     .get()
                                     .execInContainer(
@@ -93,11 +93,11 @@ public class ConfluentKafkaContainerCluster implements Startable {
                                             "kafka-metadata-shell --snapshot /var/lib/kafka/data/__cluster_metadata-0/00000000000000000000.log ls /brokers | wc -l"
                                     );
                     String brokers = result.getStdout().replace("\n", "");
-                    
+
                     assertThat(brokers).asString().isEqualTo(String.valueOf(this.brokersNum));
                 });
     }
-    
+
     @Override
     public void stop() {
         this.brokers.stream().parallel().forEach(GenericContainer::stop);

@@ -9,20 +9,20 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration(proxyBeanMethods = false)
 public class GlobalInterceptorConfiguration {
-    
+
     @GrpcGlobalServerInterceptor
     LogGrpcInterceptor logGrpcInterceptor() {
         return new LogGrpcInterceptor();
     }
-    
+
     @GrpcGlobalClientInterceptor
     JwtGrpcClientInterceptor jwtGrpcClientInterceptor() {
         return new JwtGrpcClientInterceptor();
     }
-    
+
     @GrpcGlobalServerInterceptor
     JwtGrpcServerInterceptor jwtGrpcServerInterceptor() {
         return new JwtGrpcServerInterceptor();
     }
-    
+
 }
