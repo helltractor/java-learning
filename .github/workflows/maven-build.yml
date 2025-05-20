@@ -21,8 +21,17 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Build All Modules
-        run: |
-          mvn -B clean install \
-            -pl .,grpc-spring,pattern-design,rocketmq \
-            -am
+      - name: Build Demo Modules
+        run: mvn -B clean install
+        
+      - name: Build grpc-spring
+        run: mvn -B clean install
+        working-directory: ./grpc-spring
+
+      - name: Build pattern-design
+        run: mvn -B clean install
+        working-directory: ./pattern-design
+
+      - name: Build rocketmq
+        run: mvn -B clean install
+        working-directory: ./rocketmq
