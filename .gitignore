@@ -1,6 +1,7 @@
 target/
 docker/
 !**/src/main/**/target/
+.flattened-pom.xml
 
 ### IntelliJ IDEA ###
 .idea/
