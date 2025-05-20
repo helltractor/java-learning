@@ -1,5 +1,6 @@
 target/
 docker/
+log/
 !**/src/main/**/target/
 .flattened-pom.xml
 

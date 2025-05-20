@@ -22,8 +22,6 @@ public class ReflectionTest {
 
     /**
      * 获取public和private字段
-     *
-     * @throws ClassNotFoundException
      */
     @Test
     void getDeclaredField() throws ClassNotFoundException {
@@ -36,8 +34,6 @@ public class ReflectionTest {
 
     /**
      * 获取public字段
-     *
-     * @throws ClassNotFoundException
      */
     @Test
     void getFields() throws ClassNotFoundException {
@@ -51,8 +47,6 @@ public class ReflectionTest {
 
     /**
      * 获取父类的字段
-     *
-     * @throws ClassNotFoundException
      */
     @Test
     void getSuperFields() throws ClassNotFoundException {
@@ -65,9 +59,6 @@ public class ReflectionTest {
 
     /**
      * 获取指定字段
-     *
-     * @throws ClassNotFoundException
-     * @throws NoSuchFieldException
      */
     @Test
     void getDeclaredFieldByAnnotation() throws ClassNotFoundException, NoSuchFieldException {
@@ -89,10 +80,6 @@ public class ReflectionTest {
 
     /**
      * 获取static字段值
-     *
-     * @throws ClassNotFoundException
-     * @throws NoSuchFieldException
-     * @throws IllegalAccessException
      */
     @Test
     void getStaticField() throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
@@ -111,11 +98,6 @@ public class ReflectionTest {
 
     /**
      * 获取方法
-     *
-     * @throws ClassNotFoundException
-     * @throws NoSuchMethodException
-     * @throws IllegalAccessException
-     * @throws InvocationTargetException
      */
     @Test
     void getDeclaredMethod() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
@@ -139,13 +121,6 @@ public class ReflectionTest {
 
     /**
      * 类型转换,通过Class.cast()方法实现, 在编译时实现
-     *
-     * @throws ClassNotFoundException
-     * @throws NoSuchMethodException
-     * @throws IllegalAccessException
-     * @throws InvocationTargetException
-     * @throws InstantiationException
-     * @throws NoSuchFieldException
      */
     @Test
     void cast() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchFieldException {
@@ -160,12 +135,6 @@ public class ReflectionTest {
 
     /**
      * 类型转换, 通过使用泛型实现类型转换
-     *
-     * @throws ClassNotFoundException
-     * @throws NoSuchMethodException
-     * @throws IllegalAccessException
-     * @throws InvocationTargetException
-     * @throws InstantiationException
      */
     @Test
     void reflect() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchFieldException {

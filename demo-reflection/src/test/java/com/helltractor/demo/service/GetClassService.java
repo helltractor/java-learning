@@ -7,8 +7,6 @@ public class GetClassService {
 
     /**
      * 通过类名.class获取, 静态引用, 编译时获取, 适用于知道类名的情况
-     *
-     * @return
      */
     public static Class<?> getClassByStatic() {
         return Object.class;
