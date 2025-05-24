@@ -17,21 +17,20 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
-          java-version: '21'
-          distribution: 'temurin'
-          cache: 'maven'
+          java-version: "21"
+          distribution: "temurin"
 
       - name: Build demo modules
-        run: mvn -B clean install
-        
+        run: mvn -B package
+
       - name: Build grpc-spring
-        run: mvn -B clean install
-        working-directory: ./grpc-spring
+        run: mvn -B package
+        working-directory: grpc-spring
 
       - name: Build pattern-design
-        run: mvn -B clean install
-        working-directory: ./pattern-design
+        run: mvn -B package
+        working-directory: pattern-design
 
       - name: Build rocketmq
-        run: mvn -B clean install
-        working-directory: ./rocketmq
+        run: mvn -B package
+        working-directory: rocketmq
