@@ -59,7 +59,7 @@ public class ReentrantLockDemo {
         }
     }
 
-    public static class TryLockTask2 implements Task {
+    public static class TryLockTaskTwo implements Task {
 
         private ReentrantLock lock = new ReentrantLock();
 

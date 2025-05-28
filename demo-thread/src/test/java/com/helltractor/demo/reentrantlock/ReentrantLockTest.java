@@ -3,7 +3,7 @@ package com.helltractor.demo.reentrantlock;
 import com.helltractor.demo.reentrantlock.ReentrantLockDemo.LockInterruptiblyTask;
 import com.helltractor.demo.reentrantlock.ReentrantLockDemo.LockTask;
 import com.helltractor.demo.reentrantlock.ReentrantLockDemo.TryLockTask;
-import com.helltractor.demo.reentrantlock.ReentrantLockDemo.TryLockTask2;
+import com.helltractor.demo.reentrantlock.ReentrantLockDemo.TryLockTaskTwo;
 import org.junit.jupiter.api.Test;
 
 public class ReentrantLockTest {
@@ -34,7 +34,7 @@ public class ReentrantLockTest {
     
     @Test
     public void testTryLockWithTimeout() {
-        TryLockTask2 tryLockTask = new TryLockTask2();
+        TryLockTaskTwo tryLockTask = new TryLockTaskTwo();
         MyThread thread1 = new MyThread("Thread 1", tryLockTask);
         MyThread thread2 = new MyThread("Thread 2", tryLockTask);
         MyThread thread3 = new MyThread("Thread 3", tryLockTask);

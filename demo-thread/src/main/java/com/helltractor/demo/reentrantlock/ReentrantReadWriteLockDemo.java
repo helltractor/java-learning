@@ -1,4 +1,4 @@
-package com.helltractor.demo;
+package com.helltractor.demo.reentrantlock;
 
 import java.util.Random;
 

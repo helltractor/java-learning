@@ -10,7 +10,7 @@ public class ThreadLocalDemo {
         ExecutorService es = Executors.newFixedThreadPool(3);
         String[] users = new String[]{"Bob", "Alice", "Tim", "Mike", "Lily", "Jack", "Bush"};
         for (String user : users) {
-            es.submit(new Task(user));
+            es.submit(new ThreadLocalTask(user));
         }
         es.awaitTermination(3, TimeUnit.SECONDS);
         es.shutdown();

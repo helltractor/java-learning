@@ -2,7 +2,7 @@ package com.helltractor.demo.reentrantlock;
 
 class MyThread extends Thread {
 
-    private Task task;
+    private final Task task;
 
     public MyThread(String name, Task task) {
         super(name);
