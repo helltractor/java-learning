@@ -18,6 +18,7 @@
     <modules>
         <module>demo-aspectj</module>
         <module>demo-consul</module>
+        <module>demo-netty</module>
         <module>demo-mybatis</module>
         <module>demo-redis-spring-data</module>
         <module>demo-reflection</module>
@@ -41,6 +42,7 @@
         <mybatis-spring.version>3.0.3</mybatis-spring.version>
         <commons.lang.version>2.6</commons.lang.version>
         <aspectj.version>1.9.4</aspectj.version>
+        <netty.version>4.1.119.Final</netty.version>
         <logback.version>1.5.6</logback.version>
         <lombok.version>1.18.30</lombok.version>
         <!-- test -->
