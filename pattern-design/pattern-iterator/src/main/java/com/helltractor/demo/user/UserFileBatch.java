@@ -31,7 +31,7 @@ public class UserFileBatch implements Iterable<List<User>> {
         
         private boolean finished = false;
         private final BufferedReader reader;
-        private List<User> batchUserList = new ArrayList<>();
+        private final List<User> batchUserList = new ArrayList<>();
         
         UserFileBatchIterator() {
             try {

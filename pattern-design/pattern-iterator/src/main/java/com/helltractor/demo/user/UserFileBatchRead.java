@@ -37,6 +37,7 @@ public class UserFileBatchRead implements Iterable<User> {
         UserFileReadBatchIterator() {
             try {
                 this.reader = new BufferedReader(new FileReader(file));
+                readUsersFromFile();
             } catch (FileNotFoundException e) {
                 throw new RuntimeException("File not found: " + file.getAbsolutePath(), e);
             }
@@ -73,7 +74,7 @@ public class UserFileBatchRead implements Iterable<User> {
         
         @Override
         public boolean hasNext() {
-            if (batchUserList == null || index >= batchUserList.size() && !finished) {
+            if (index >= batchUserList.size() && !finished) {
                 try {
                     readUsersFromFile();
                 } catch (Exception e) {
