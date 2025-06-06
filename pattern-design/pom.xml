@@ -15,6 +15,7 @@
         <module>pattern-memento</module>
         <module>pattern-decorator</module>
         <module>pattern-iterator</module>
+        <module>pattern-composite</module>
     </modules>
 
     <properties>
