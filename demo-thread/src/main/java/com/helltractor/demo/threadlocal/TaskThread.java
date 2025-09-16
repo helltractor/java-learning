@@ -1,10 +1,10 @@
 package com.helltractor.demo.threadlocal;
 
-class ThreadLocalTask implements Runnable {
+class TaskThread implements Runnable {
 
-    final String username;
+    private final String username;
 
-    public ThreadLocalTask(String username) {
+    public TaskThread(String username) {
         this.username = username;
     }
 

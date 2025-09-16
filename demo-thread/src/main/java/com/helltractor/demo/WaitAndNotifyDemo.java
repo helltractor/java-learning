@@ -26,7 +26,7 @@ public class WaitAndNotifyDemo {
 
         Thread add = new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                String s = "t-" + Math.random();
+                String s = "Worker-" + i;
                 System.out.println("add task: " + s);
                 q.addTask(s);
                 try {
@@ -39,12 +39,13 @@ public class WaitAndNotifyDemo {
         add.start();
         add.join();
         Thread.sleep(100);
+        
         for (var t : ts) {
             t.interrupt();
         }
     }
 
-    private static class TaskQueue {
+    static class TaskQueue {
 
         private Queue<String> queue = new LinkedList<>();
 
@@ -54,6 +55,7 @@ public class WaitAndNotifyDemo {
         }
 
         public synchronized String getTask() throws InterruptedException {
+            // avoid spurious wakeup
             while (queue.isEmpty()) {
                 this.wait();
             }

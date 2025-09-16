@@ -3,7 +3,7 @@ package com.helltractor.demo.reentrantlock;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class ReentrantLockDemo {
+public class ReentrantLockSample {
 
     private static void getReentrantLockContext(ReentrantLock lock) {
         try {

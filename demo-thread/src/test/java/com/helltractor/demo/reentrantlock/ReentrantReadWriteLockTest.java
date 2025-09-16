@@ -12,10 +12,10 @@ public class ReentrantReadWriteLockTest {
     public void testReentrantReadWriteLock() {
         
         ExecutorService executorService = Executors.newCachedThreadPool();
-        ReentrantReadWriteLockDemo demo = new ReentrantReadWriteLockDemo();
+        ReentrantReadWriteLockSample sample = new ReentrantReadWriteLockSample();
         for (int i = 0; i < 20; i++) {
-            executorService.execute(demo.new MyThread());
-            demo.cache.get(0);
+            executorService.execute(new ReentrantReadWriteLockSample.ReentrantReadWriteLockThread());
+            sample.cache.get(0);
         }
         executorService.shutdown();
     }
