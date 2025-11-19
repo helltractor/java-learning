@@ -2,6 +2,7 @@ package com.helltractor.demo.interceptor;
 
 import com.helltractor.demo.constant.JwtConstant;
 import com.helltractor.demo.util.JwtUtil;
+import io.grpc.*;
 import org.springframework.beans.factory.annotation.Value;
 
 public class JwtGrpcClientInterceptor implements ClientInterceptor {
