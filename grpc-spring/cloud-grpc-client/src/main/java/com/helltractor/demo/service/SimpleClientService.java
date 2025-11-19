@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class SimpleClientService {
-
+    
     @GrpcClient("cloud-grpc-server")
     private SimpleServiceGrpc.SimpleServiceBlockingStub simpleServiceStub;
-
+    
     public HelloReply sayHello(final HelloRequest request) {
         return this.simpleServiceStub.sayHello(request);
     }
-
+    
     public String sendHelloMessage(final String name) {
         try {
             final HelloReply response = this.simpleServiceStub.sayHello(HelloRequest.newBuilder().setName(name).build());
@@ -29,7 +29,7 @@ public class SimpleClientService {
             return "FAILED with " + e.getStatus().getCode();
         }
     }
-
+    
     public String sendByeMessage(final String name) {
         try {
             final HelloAndByeReply response = this.simpleServiceStub.sayHelloAndBye(HelloRequest.newBuilder().setName(name).build());
@@ -39,5 +39,5 @@ public class SimpleClientService {
             return "FAILED with " + e.getStatus().getCode();
         }
     }
-
+    
 }

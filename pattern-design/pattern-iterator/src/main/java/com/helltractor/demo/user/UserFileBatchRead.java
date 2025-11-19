@@ -30,9 +30,9 @@ public class UserFileBatchRead implements Iterable<User> {
     private class UserFileReadBatchIterator implements Iterator<User> {
         
         private final BufferedReader reader;
+        private final List<User> batchUserList = new ArrayList<>();
         private int index = 0;
         private boolean finished = false;
-        private final List<User> batchUserList = new ArrayList<>();
         
         UserFileReadBatchIterator() {
             try {

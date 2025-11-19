@@ -12,10 +12,10 @@ import net.devh.boot.grpc.server.service.GrpcService;
 @GrpcService
 @Slf4j
 public class SimpleServerService extends SimpleServiceGrpc.SimpleServiceImplBase {
-
+    
     @GrpcClient("cloud-grpc-server")
     private SimpleServiceGrpc.SimpleServiceBlockingStub simpleServiceStub;
-
+    
     @Override
     public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
         try {
@@ -26,7 +26,7 @@ public class SimpleServerService extends SimpleServiceGrpc.SimpleServiceImplBase
         }
         responseObserver.onCompleted();
     }
-
+    
     @Override
     public void sayHelloAndBye(HelloRequest req, StreamObserver<HelloAndByeReply> responseObserver) {
         try {
@@ -38,5 +38,5 @@ public class SimpleServerService extends SimpleServiceGrpc.SimpleServiceImplBase
         }
         responseObserver.onCompleted();
     }
-
+    
 }

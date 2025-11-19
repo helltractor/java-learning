@@ -1,9 +1,9 @@
 package com.helltractor.demo.reentrantlock;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import org.junit.jupiter.api.Test;
 
 
 public class ReentrantReadWriteLockTest {

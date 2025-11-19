@@ -27,16 +27,19 @@ docker-compose up -d
 ### 🧩 主服务器配置
 
 1. 进入主服务器容器
+
 ```sh
 docker exec -it mysql-master bash
 ```
 
 2. 进入 MySQL 客户端
+
 ```bash
 mysql -uroot -p123456
 ```
 
 3. 创建复制用户，并授予权限，用于同步数据
+
 ```sql
 CREATE USER 'slave'@'%' IDENTIFIED BY '123456';
 GRANT REPLICATION SLAVE ON *.* TO 'slave'@'%';
@@ -44,6 +47,7 @@ FLUSH PRIVILEGES;
 ```
 
 4. 记录主服务器的二进制日志文件名和位置（即File和Position对应的值）
+
 ```sql
 SHOW MASTER STATUS;
 ```
@@ -51,21 +55,25 @@ SHOW MASTER STATUS;
 ### 🔁 从服务器配置
 
 1. 查询主服务器IP
+
 ```sh
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ${MYSQL_MASTER_NAME}
 ```
 
 2. 进入从服务器容器
+
 ```sh
 docker exec -it ${MYSQL_SLAVE_NAME} bash
 ```
 
 3. 进入 MySQL 客户端
+
 ```bash
 mysql -uroot -p123456
 ```
 
 4. 配置从服务器连接主服务器
+
 ```sql
 CHANGE MASTER TO 
 master_host='${MYSQL_MASTER_HOST}',
@@ -88,11 +96,13 @@ master_connect_retry=60;
 - master_connect_retry: 连接主服务器失败后，重试的时间间隔，单位秒，默认60秒
 
 5. 启动从服务器
+
 ```sql
 START SLAVE;
 ```
 
 6. 查看从服务器状态
+
 ```sql
 SHOW SLAVE STATUS \G;
 ```

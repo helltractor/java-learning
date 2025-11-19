@@ -12,7 +12,7 @@ services:
       - ./mysql-master/volumes/data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
-#    entrypoint: bash -c "chmod 644 /etc/mysql/my.cnf && exec /usr/local/bin/docker-entrypoint.sh mysqld"
+    #    entrypoint: bash -c "chmod 644 /etc/mysql/my.cnf && exec /usr/local/bin/docker-entrypoint.sh mysqld"
     command: [
       '--character-set-server=utf8mb4',
       '--collation-server=utf8mb4_general_ci',
@@ -34,7 +34,7 @@ services:
       - ./mysql-slave/volumes/data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: "123456"
-#    entrypoint: bash -c "chmod 644 /etc/mysql/my.cnf && exec /usr/local/bin/docker-entrypoint.sh mysqld"
+    #    entrypoint: bash -c "chmod 644 /etc/mysql/my.cnf && exec /usr/local/bin/docker-entrypoint.sh mysqld"
     command: [
       '--character-set-server=utf8mb4',
       '--collation-server=utf8mb4_general_ci',

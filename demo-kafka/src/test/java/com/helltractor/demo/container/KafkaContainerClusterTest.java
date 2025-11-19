@@ -1,11 +1,5 @@
 package com.helltractor.demo.container;
 
-import java.time.Duration;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -18,50 +12,57 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.tuple;
 import org.awaitility.Awaitility;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.shaded.com.google.common.collect.ImmutableMap;
 
-class KafkaContainerClusterTest {
+import java.time.Duration;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
+
+class KafkaContainerClusterTest {
+    
     @Test
     void testKafkaContainerCluster() throws Exception {
         try (KafkaContainerCluster cluster = new KafkaContainerCluster("6.2.1", 3, 2)) {
             cluster.start();
             String bootstrapServers = cluster.getBootstrapServers();
-
+            
             assertThat(cluster.getBrokers()).hasSize(3);
-
+            
             testKafkaFunctionality(bootstrapServers, 3, 2);
         }
     }
-
+    
     @Test
     void testKafkaContainerKraftCluster() throws Exception {
         try (KafkaContainerKraftCluster cluster = new KafkaContainerKraftCluster("7.0.0", 3, 2)) {
             cluster.start();
             String bootstrapServers = cluster.getBootstrapServers();
-
+            
             assertThat(cluster.getBrokers()).hasSize(3);
-
+            
             testKafkaFunctionality(bootstrapServers, 3, 2);
         }
     }
-
+    
     @Test
     void testKafkaContainerKraftClusterAfterConfluentPlatform740() throws Exception {
         try (KafkaContainerKraftCluster cluster = new KafkaContainerKraftCluster("7.4.0", 3, 2)) {
             cluster.start();
             String bootstrapServers = cluster.getBootstrapServers();
-
+            
             assertThat(cluster.getBrokers()).hasSize(3);
-
+            
             testKafkaFunctionality(bootstrapServers, 3, 2);
         }
     }
-
+    
     protected void testKafkaFunctionality(String bootstrapServers, int partitions, int rf) throws Exception {
         try (
                 AdminClient adminClient = AdminClient.create(
@@ -87,28 +88,28 @@ class KafkaContainerClusterTest {
                 new StringDeserializer(),
                 new StringDeserializer()
         );) {
-                    String topicName = "messages";
-
-                    Collection<NewTopic> topics = Collections.singletonList(new NewTopic(topicName, partitions, (short) rf));
-                    adminClient.createTopics(topics).all().get(30, TimeUnit.SECONDS);
-
-                    consumer.subscribe(Collections.singletonList(topicName));
-
-                    producer.send(new ProducerRecord<>(topicName, "testcontainers", "rulezzz")).get();
-
-                    Awaitility
-                            .await()
-                            .atMost(Duration.ofSeconds(10))
-                            .untilAsserted(() -> {
-                                ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
-
-                                assertThat(records)
-                                        .hasSize(1)
-                                        .extracting(ConsumerRecord::topic, ConsumerRecord::key, ConsumerRecord::value)
-                                        .containsExactly(tuple(topicName, "testcontainers", "rulezzz"));
-                            });
-
-                    consumer.unsubscribe();
-                }
+            String topicName = "messages";
+            
+            Collection<NewTopic> topics = Collections.singletonList(new NewTopic(topicName, partitions, (short) rf));
+            adminClient.createTopics(topics).all().get(30, TimeUnit.SECONDS);
+            
+            consumer.subscribe(Collections.singletonList(topicName));
+            
+            producer.send(new ProducerRecord<>(topicName, "testcontainers", "rulezzz")).get();
+            
+            Awaitility
+                    .await()
+                    .atMost(Duration.ofSeconds(10))
+                    .untilAsserted(() -> {
+                        ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
+                        
+                        assertThat(records)
+                                .hasSize(1)
+                                .extracting(ConsumerRecord::topic, ConsumerRecord::key, ConsumerRecord::value)
+                                .containsExactly(tuple(topicName, "testcontainers", "rulezzz"));
+                    });
+            
+            consumer.unsubscribe();
+        }
     }
 }

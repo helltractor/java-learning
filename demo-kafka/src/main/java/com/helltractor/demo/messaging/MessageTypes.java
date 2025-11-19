@@ -13,26 +13,22 @@ import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.core.type.filter.TypeFilter;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Holds message types.
  */
 @Component
 public class MessageTypes {
-
+    
     private static final char SEP = '#';
-
+    
     private final Logger logger = LoggerFactory.getLogger(getClass());
-
+    
     private final String messagePackage = AbstractMessage.class.getPackageName();
-
+    
     private final Map<String, Class<? extends AbstractMessage>> messageTypes = new HashMap<>();
-
+    
     /**
      * Find all message classes in the package and instantiate them.
      */
@@ -67,13 +63,13 @@ public class MessageTypes {
             }
         }
     }
-
+    
     public String serialize(AbstractMessage message) {
         String type = message.getClass().getName();
         String json = JsonUtil.writeJson(message);
         return type + SEP + json;
     }
-
+    
     public AbstractMessage deserialize(String data) {
         int pos = data.indexOf(SEP);
         if (pos == -1) {
@@ -87,7 +83,7 @@ public class MessageTypes {
         String json = data.substring(pos + 1);
         return JsonUtil.readJson(json, clazz);
     }
-
+    
     public List<AbstractMessage> deserialize(List<String> dataList) {
         List<AbstractMessage> list = new ArrayList<>(dataList.size());
         for (String data : dataList) {
@@ -95,7 +91,7 @@ public class MessageTypes {
         }
         return list;
     }
-
+    
     public List<AbstractMessage> deserializeConsumerRecords(List<ConsumerRecord<String, String>> dataList) {
         List<AbstractMessage> list = new ArrayList<>(dataList.size());
         for (ConsumerRecord<String, String> data : dataList) {

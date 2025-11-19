@@ -10,11 +10,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class ProxyDemo {
-
+    
     static final String jdbcUrl = "jdbc:mysql://localhost:3306/learnjdbc?useSSL=false&characterEncoding=utf8";
     static final String jdbcUsername = "root";
     static final String jdbcPassword = "";
-
+    
     public static void main(String[] args) throws Exception {
         DataSource lazyDataSource = new LazyDataSource(jdbcUrl, jdbcUsername, jdbcPassword);
         System.out.println("get lazy connection...");
@@ -31,7 +31,7 @@ public class ProxyDemo {
                 }
             }
         }
-
+        
         DataSource pooledDataSource = new PooledDataSource(jdbcUrl, jdbcUsername, jdbcPassword);
         try (Connection conn = pooledDataSource.getConnection()) {
         }
@@ -41,7 +41,7 @@ public class ProxyDemo {
         try (Connection conn = pooledDataSource.getConnection()) {
             // 获取到的是同一个Connection
         }
-
+        
         DataSource lazyPoolDataSource = new LazyPooledDataSource(jdbcUrl, jdbcUsername, jdbcPassword);
         System.out.println("get lazy connection...");
         try (Connection conn = lazyPoolDataSource.getConnection()) {
@@ -60,5 +60,5 @@ public class ProxyDemo {
             // 获取到的是同一个Connection
         }
     }
-
+    
 }

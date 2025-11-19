@@ -31,24 +31,24 @@ import java.util.regex.Pattern;
  */
 @Component
 public class MessagingFactory {
-
+    
     private final Logger logger = LoggerFactory.getLogger(getClass());
-
+    
     private final MessageTypes messageTypes;
-
+    
     private final KafkaTemplate<String, String> kafkaTemplate;
-
+    
     private final ConcurrentKafkaListenerContainerFactory<String, String> listenerContainerFactory;
-
+    
     private final KafkaAdmin kafkaAdmin;
-
+    
     public MessagingFactory(MessageTypes messageTypes, KafkaTemplate<String, String> kafkaTemplate, ConcurrentKafkaListenerContainerFactory<String, String> listenerContainerFactory, KafkaAdmin kafkaAdmin) {
         this.messageTypes = messageTypes;
         this.kafkaTemplate = kafkaTemplate;
         this.listenerContainerFactory = listenerContainerFactory;
         this.kafkaAdmin = kafkaAdmin;
     }
-
+    
     @PostConstruct
     public void init() throws InterruptedException, ExecutionException {
         logger.info("init kafka admin...");
@@ -71,12 +71,12 @@ public class MessagingFactory {
         }
         logger.info("init MessagingFactory ok.");
     }
-
+    
     /**
      * Create a message producer for the specified topic.
      */
     public <T extends AbstractMessage> MessageProducer<T> createMessageProducer(Messaging.Topic topic,
-            Class<T> messageClass) {
+                                                                                Class<T> messageClass) {
         logger.info("try create message producer for topic {}...", topic);
         final String name = topic.name();
         return new MessageProducer<>() {
@@ -86,17 +86,17 @@ public class MessagingFactory {
             }
         };
     }
-
+    
     public <T extends AbstractMessage> MessageConsumer createBatchMessageListener(Messaging.Topic topic, String groupId,
-            BatchMessageHandler<T> messageHandler) {
+                                                                                  BatchMessageHandler<T> messageHandler) {
         return createBatchMessageListener(topic, groupId, messageHandler, null);
     }
-
+    
     /**
      * Create a batch message listener for the specified topic.
      */
     public <T extends AbstractMessage> MessageConsumer createBatchMessageListener(Messaging.Topic topic, String groupId,
-            BatchMessageHandler<T> messageHandler, CommonErrorHandler errorHandler) {
+                                                                                  BatchMessageHandler<T> messageHandler, CommonErrorHandler errorHandler) {
         logger.info("try create batch message listener for topic {}: group id = {}...", topic, groupId);
         ConcurrentMessageListenerContainer<String, String> listenerContainer = listenerContainerFactory
                 .createListenerContainer(new KafkaListenerEndpointAdapter() {
@@ -104,7 +104,7 @@ public class MessagingFactory {
                     public String getGroupId() {
                         return groupId;
                     }
-
+                    
                     @Override
                     public Collection<String> getTopics() {
                         return List.of(topic.name());
@@ -128,61 +128,61 @@ public class MessagingFactory {
         listenerContainer.start();
         return listenerContainer::stop;
     }
-
+    
     /**
      * Adapter for KafkaListenerEndpoint.
      */
     private static class KafkaListenerEndpointAdapter implements KafkaListenerEndpoint {
-
+        
         @Override
         public String getId() {
             return null;
         }
-
+        
         @Override
         public String getGroupId() {
             return null;
         }
-
+        
         @Override
         public String getGroup() {
             return null;
         }
-
+        
         @Override
         public Collection<String> getTopics() {
             return List.of();
         }
-
+        
         @Override
         public Pattern getTopicPattern() {
             return null;
         }
-
+        
         @Override
         public String getClientIdPrefix() {
             return null;
         }
-
+        
         @Override
         public Integer getConcurrency() {
             return Integer.valueOf(1);
         }
-
+        
         @Override
         public Boolean getAutoStartup() {
             return Boolean.FALSE;
         }
-
+        
         @Override
         public void setupListenerContainer(MessageListenerContainer listenerContainer, MessageConverter messageConverter) {
         }
-
+        
         @Override
         public TopicPartitionOffset[] getTopicPartitionsToAssign() {
             return null;
         }
-
+        
         @Override
         public boolean isSplitIterables() {
             return false;

@@ -1,15 +1,15 @@
 package com.helltractor.demo.calc;
 
 public class DivisionExpression implements Expression {
-
+    
     private Expression left;
     private Expression right;
-
+    
     public DivisionExpression(Expression left, Expression right) {
         this.left = left;
         this.right = right;
     }
-
+    
     @Override
     public int getValue() {
         if (right.getValue() == 0) {

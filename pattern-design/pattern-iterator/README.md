@@ -47,19 +47,19 @@
 ## 实现细节
 
 1. **基础文件迭代**
-   - 一次性读取所有数据到内存
-   - 支持单条记录遍历
-   - 使用Java 8 Stream API处理数据
+    - 一次性读取所有数据到内存
+    - 支持单条记录遍历
+    - 使用Java 8 Stream API处理数据
 
 2. **批量文件迭代**
-   - 按批次读取数据
-   - 每次返回一批用户数据
-   - 支持自定义批次大小
+    - 按批次读取数据
+    - 每次返回一批用户数据
+    - 支持自定义批次大小
 
 3. **延迟加载迭代**
-   - 按需读取数据
-   - 维护内部缓冲区
-   - 自动处理文件关闭
+    - 按需读取数据
+    - 维护内部缓冲区
+    - 自动处理文件关闭
 
 ## 使用示例
 
@@ -96,5 +96,5 @@ for (User user : userFileBatchRead) {
 
 ## 参考
 
-> [Iterator Pattern](https://refactoringguru.cn/design-patterns/iterator) 
+> [Iterator Pattern](https://refactoringguru.cn/design-patterns/iterator)
 > [【设计模式实战】迭代器模式]（https://www.bilibili.com/video/BV1XhNSeYEVy）

@@ -13,9 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ProducerExample {
-
+    
     private static final Logger logger = LoggerFactory.getLogger(ProducerExample.class);
-
+    
     public static void main(String[] args) throws ClientException, InterruptedException, IOException {
         // 接入点地址，需要设置成Proxy的地址和端口列表，一般是xxx:8080;xxx:8081
         String endpoint = "localhost:8081";
@@ -53,5 +53,5 @@ public class ProducerExample {
         // 如果不需要再使用Producer，可关闭该实例。
         producer.close();
     }
-
+    
 }

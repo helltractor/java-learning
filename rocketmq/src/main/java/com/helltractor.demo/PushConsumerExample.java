@@ -14,12 +14,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class PushConsumerExample {
-
+    
     private static final Logger logger = LoggerFactory.getLogger(PushConsumerExample.class);
-
+    
     private PushConsumerExample() {
     }
-
+    
     public static void main(String[] args) throws ClientException, IOException, InterruptedException {
         final ClientServiceProvider provider = ClientServiceProvider.loadService();
         // 接入点地址，需要设置成Proxy的地址和端口列表，一般是xxx:8080;xxx:8081
@@ -52,5 +52,5 @@ public class PushConsumerExample {
         // 如果不需要再使用 PushConsumer，可关闭该实例。
         // pushConsumer.close();
     }
-
+    
 }

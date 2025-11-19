@@ -3,7 +3,7 @@ package com.helltractor.demo.calc;
 import java.util.*;
 
 public class ExpressionParser {
-
+    
     private final String expression;
     private final Map<String, Integer> variables = new HashMap<>();
     private int point = 0;

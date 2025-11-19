@@ -7,15 +7,15 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration(proxyBeanMethods = false)
 public class GlobalInterceptorConfiguration {
-
+    
     @GrpcGlobalClientInterceptor
     LogGrpcInterceptor logClientInterceptor() {
         return new LogGrpcInterceptor();
     }
-
+    
     @GrpcGlobalClientInterceptor
     JwtGrpcClientInterceptor jwtClientInterceptor() {
         return new JwtGrpcClientInterceptor();
     }
-
+    
 }

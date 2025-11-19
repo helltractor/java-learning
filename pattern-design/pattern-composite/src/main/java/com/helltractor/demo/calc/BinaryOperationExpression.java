@@ -1,7 +1,7 @@
 package com.helltractor.demo.calc;
 
 public abstract class BinaryOperationExpression implements Expression {
-
+    
     private Expression left;
     private Expression right;
     

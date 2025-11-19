@@ -6,16 +6,16 @@ import java.util.Queue;
 import java.util.function.Supplier;
 
 public class LazyPooledConnectionProxy extends AbstractConnectionProxy {
-
+    
     Connection target;
     Queue<LazyPooledConnectionProxy> idleQueue;
     private Supplier<Connection> supplier;
-
+    
     public LazyPooledConnectionProxy(Queue<LazyPooledConnectionProxy> idleQueue, Supplier<Connection> supplier) {
         this.idleQueue = idleQueue;
         this.supplier = supplier;
     }
-
+    
     @Override
     protected Connection getRealConnection() {
         if (target == null) {
@@ -23,7 +23,7 @@ public class LazyPooledConnectionProxy extends AbstractConnectionProxy {
         }
         return target;
     }
-
+    
     @Override
     public void close() throws SQLException {
         if (target != null) {
@@ -31,5 +31,5 @@ public class LazyPooledConnectionProxy extends AbstractConnectionProxy {
             idleQueue.offer(this);
         }
     }
-
+    
 }

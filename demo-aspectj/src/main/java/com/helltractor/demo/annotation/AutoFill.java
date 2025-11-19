@@ -13,6 +13,6 @@ import com.helltractor.demo.enumeration.OperationType;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AutoFill {
-
+    
     OperationType value() default OperationType.INSERT;
 }

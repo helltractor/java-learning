@@ -3,7 +3,7 @@ package com.helltractor.demo.calc;
 import java.util.Map;
 
 public class CalculateDemo {
-
+    
     public static void main(String[] args) {
         String expressionString = "(1+2)*(3+4)/2";
         ExpressionParser expressionParser = new ExpressionParser(expressionString);

@@ -2,7 +2,8 @@
 
 ## 介绍
 
-装饰器模式是一种结构型设计模式，它允许我们在不改变原有对象结构的情况下，动态地给对象添加新的功能。在本项目中，我们通过实现一个自定义注解 `@TimestampRequestBody` 来展示装饰器模式的应用。
+装饰器模式是一种结构型设计模式，它允许我们在不改变原有对象结构的情况下，动态地给对象添加新的功能。在本项目中，我们通过实现一个自定义注解 `@TimestampRequestBody`
+来展示装饰器模式的应用。
 
 ## 核心功能
 
@@ -21,9 +22,9 @@
    ```
 
 2. **参数解析器**
-   - 继承 `HandlerMethodArgumentResolver` 接口
-   - 装饰原有的 `RequestResponseBodyMethodProcessor`
-   - 在解析完成后注入时间戳字段
+    - 继承 `HandlerMethodArgumentResolver` 接口
+    - 装饰原有的 `RequestResponseBodyMethodProcessor`
+    - 在解析完成后注入时间戳字段
 
 ## 使用示例
 
